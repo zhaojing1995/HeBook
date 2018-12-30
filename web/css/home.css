@@ -1,15 +1,17 @@
 *{
     margin: 0;
     padding: 0;
-    border:none;
+    border:0;
+    /*display: block;*/
 }
 body{
     width: 100%;
     height: 100%;
     display: block;
-    /*background-color: tan;*/
 }
 #container{
+
+    position: absolute;
     width: 100%;
     height: 100%;
     background-color: beige;
@@ -17,11 +19,15 @@ body{
 }
 
 #header{
+    position: fixed;
     width: 100%;
     height: 100px;
     background-color: #FF7268;
+    z-index: 100;
 }
 #content{
+    position: relative;
+    top: 100px;
     width: 80%;
     height: 650px;
     /*bottom:100px;*/
@@ -29,18 +35,51 @@ body{
     margin: 0 auto;
     z-index: 90;
     overflow: scroll;
+    margin-top: 30px;
+    border-radius: 20px;
+    padding: 10px;
     /*margin-bottom: 50px;*/
 }
 #footer{
-    z-index: 100;
     position: fixed;
-    border-bottom: 0;
+    z-index: 100;
+    bottom: 0;
     width: 100%;
     height: 50px;
     background-color: #FF7268;
+    left: 0;
 }
 #header h1{
-    text-align: center;
-    line-height: 100px;
+    text-align:left;
+    line-height: 80px;
     color:white;
+    margin-left:10px;
+    display: inline;
+}
+.bar{
+    position: relative;
+    width:60%;
+    height: 100%;
+    /*height: 40px;*/
+    background-color: aqua;
+    float: right;
+}
+
+.user{
+    position: relative;
+    width: 10%;
+    height: 100%;
+    float: right;
+}
+.user_img{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    /*border-color: aliceblue;*/
+    border: solid 5px white;
+    margin-top: 13px;
+    margin-left: 20px;
+
 }
