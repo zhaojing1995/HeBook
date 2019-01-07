@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    border:0;
+    /*display: block;*/
+    font-size: medium;
+    color: gray;
+}
+body{
+    display: block;
+}
+.continer{
+    width: 100%;
+    height: 100%;
+    background-color: chartreuse;
+}
+.select_bar {
+    width: 100%;
+    height: 100px;
+    background-color: crimson;
+
+}
+.list{
+    width: 100%;
+    height: auto;
+    background-color: tan ;
+}
