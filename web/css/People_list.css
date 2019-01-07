@@ -10,7 +10,9 @@ body{
     display: block;
 }
 .continer{
-    width: 100%;
+    margin-top: 5px;
+    margin-left: 2%;
+    width: 96%;
     height: 100%;
     background-color: chartreuse;
 }
@@ -24,4 +26,21 @@ body{
     width: 100%;
     height: auto;
     background-color: tan ;
+}
+.list_ul{
+    width: 100%;
+    height: auto;
+    background-color: aquamarine;
+}
+.people_info{
+    width: 100%;
+    height: 50px;
+    background-color: aqua;
+    list-style: none;
+    margin-top: 10px;
+}
+.info_block{
+    width: 100%;
+    height: 100%;
+    background-color: chartreuse;
 }
