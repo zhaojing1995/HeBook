@@ -14,13 +14,13 @@ body{
     margin-left: 2%;
     width: 96%;
     height: 100%;
-    background-color: chartreuse;
+    /*background-color: chartreuse;*/
     /*overflow: hidden;*/
 }
 .select_bar {
     width: 100%;
     height: 100px;
-    background-color: crimson;
+    /*background-color: crimson;*/
 
 }
 .select_labels {
@@ -41,19 +41,24 @@ body{
 }
 .select_label {
     display: inline-block;
-    width: 40px;
-    height: 85%;
+    width: auto;
+    min-width: 40px;
+    padding: 3px;
+    height: 70%;
     margin: 5px;
     list-style: none;
     /*float: left;*/
     background-color: beige;
+    text-align: center;
+    line-height: 35px;
 
 }
 .sort{
     position: relative;
     width: 100%;
-    height: 50%;
-    background-color: #ff7a88;
+    height: 40%;
+    border-bottom: solid 1px gray;
+    /*background-color: #ff7a88;*/
 }
 .sort ul{
     width: 100%;
@@ -65,24 +70,28 @@ body{
 }
 .sort_item{
     display: inline-block;
-    width: 40px;
+    /*width: 40px;*/
     height: 85%;
+    width: auto;
+    min-width: 40px;
+    padding: 3px;
     margin: 5px;
     list-style: none;
-    /*float: left;*/
+    text-align: center;
+    line-height: 30px;
 
-    background-color: beige;
+    /*background-color: beige;*/
 }
 
 .list{
     width: 100%;
     height: auto;
-    background-color: tan ;
+    /*background-color: tan ;*/
 }
 .list_ul{
     width: 100%;
     height: auto;
-    background-color: aquamarine;
+    /*background-color: aquamarine;*/
 }
 .people_info{
     width: 100%;
@@ -94,5 +103,5 @@ body{
 .info_block{
     width: 100%;
     height: 100%;
-    background-color: chartreuse;
+    /*background-color: chartreuse;*/
 }
