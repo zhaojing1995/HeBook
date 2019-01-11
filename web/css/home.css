@@ -9,6 +9,9 @@ body{
     height: 100%;
     display: block;
 }
+ ::-webkit-scrollbar{
+display:none;
+}
 #container{
 
     position: absolute;
@@ -77,17 +80,18 @@ body{
 }
 .bar ul{
     display: block;
-    width: 100%;
+    width: auto;
     height: 100%;
-    /*float: right;*/
-    padding-left:40%;
+    float: right;
+    /*padding-left:40%;*/
 }
 .bar li{
     /*margin: 20px;*/
     list-style: none;
     float: left;
     /*background-color: aquamarine;*/
-    width: 100px;
+    min-width: 100px;
+    width: auto;
     height: 50%;
     margin-top: 50px;
 }
@@ -128,4 +132,4 @@ body{
             text-align: center;
             color: white;
             line-height: 50px;
-        }
+}
