@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91443901-9cf1-4239-aac2-a32fd7a2bd04" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/People_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/People_list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/html/People_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/html/People_list.html" afterDir="false" />
-    </list>
+    <list default="true" id="91443901-9cf1-4239-aac2-a32fd7a2bd04" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,8 +54,8 @@
           <file leaf-file-name="People_list.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/web/css/People_list.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="355">
-                  <caret line="51" column="6" lean-forward="true" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
+                <state relative-caret-position="481">
+                  <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -264,12 +260,18 @@
       <option name="project" value="LOCAL" />
       <updated>1546876997079</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="people_select&amp;sort bar">
+      <created>1547132977393</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1547132977393</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -332,7 +334,8 @@
     <MESSAGE value="user-bar1-refine 2" />
     <MESSAGE value="people_list" />
     <MESSAGE value="people_list-1" />
-    <option name="LAST_COMMIT_MESSAGE" value="people_list-1" />
+    <MESSAGE value="people_select&amp;sort bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="people_select&amp;sort bar" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/html/home.html">
@@ -527,8 +530,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/css/People_list.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="51" column="6" lean-forward="true" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
+        <state relative-caret-position="481">
+          <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
         </state>
       </provider>
     </entry>
