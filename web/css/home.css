@@ -9,6 +9,9 @@ body{
     height: 100%;
     display: block;
 }
+ ::-webkit-scrollbar{
+display:none;
+}
 #container{
 
     position: absolute;
@@ -24,6 +27,22 @@ body{
     height: 100px;
     background-color: #FF7268;
     z-index: 100;
+}
+.new_peopel{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color:#FF7268;
+    z-index: 100;
+    border-radius: 50%;
+    font-size: 40px;
+    text-align: center;
+    line-height: 47px;
+    color:  white;
+    float: left;
+    top: 140px;
+    left: 40px;
+    /*left: -50px;*/
 }
 #content{
     position: relative;
@@ -77,17 +96,18 @@ body{
 }
 .bar ul{
     display: block;
-    width: 100%;
+    width: auto;
     height: 100%;
-    /*float: right;*/
-    padding-left:40%;
+    float: right;
+    /*padding-left:40%;*/
 }
 .bar li{
     /*margin: 20px;*/
     list-style: none;
     float: left;
     /*background-color: aquamarine;*/
-    width: 100px;
+    min-width: 100px;
+    width: auto;
     height: 50%;
     margin-top: 50px;
 }
@@ -128,4 +148,4 @@ body{
             text-align: center;
             color: white;
             line-height: 50px;
-        }
+}

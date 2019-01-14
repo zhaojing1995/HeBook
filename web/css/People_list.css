@@ -13,47 +13,64 @@ body{
     margin-top: 5px;
     margin-left: 2%;
     width: 96%;
-    height: 100%;
-    background-color: chartreuse;
+    height: 600px;
+    position: fixed;
+    overflow: scroll;
+    /*background-color: chartreuse;*/
     /*overflow: hidden;*/
 }
+
 .select_bar {
-    width: 100%;
+    width: 96%;
     height: 100px;
-    background-color: crimson;
+    position: fixed;
+
+    /*background-color: crimson;*/
 
 }
 .select_labels {
+
     position: relative;
     width: 100%;
     height: 50%;
-    background-color: tan;
+    background-color: #efedea;
+    overflow: hidden;
 }
 .select_labels ul{
+    /*padding-top: 100px;*/
     width: 100%;
     height: 100%;
     padding-left:3px;
     padding-right: 3px;
     overflow-x: scroll;
+    overflow-y: hidden;
     /*overflow: scroll;*/
     white-space:nowrap;/*内容横向排列不换行*/
 
 }
 .select_label {
     display: inline-block;
-    width: 40px;
-    height: 85%;
+    width: auto;
+    min-width: 40px;
+    padding: 3px;
+    height: 70%;
     margin: 5px;
     list-style: none;
     /*float: left;*/
-    background-color: beige;
+    background-color: white;
+    text-align: center;
+    line-height: 35px;
+    color: #FF7268;
 
 }
 .sort{
     position: relative;
     width: 100%;
-    height: 50%;
-    background-color: #ff7a88;
+    height: 40%;
+    /*border-bottom: solid 1px gray;*/
+     overflow: hidden;
+
+    background-color: white;
 }
 .sort ul{
     width: 100%;
@@ -61,38 +78,108 @@ body{
     padding-left: 3px;
     padding-right: 3px;
     overflow-x: scroll;
+    overflow-y: hidden;
     white-space:nowrap;/*内容横向排列不换行*/
 }
 .sort_item{
     display: inline-block;
-    width: 40px;
+    /*width: 40px;*/
     height: 85%;
+    width: auto;
+    min-width: 40px;
+    padding: 3px;
     margin: 5px;
     list-style: none;
-    /*float: left;*/
+    text-align: center;
+    line-height: 30px;
+     color: #FF7268;
 
-    background-color: beige;
+    /*background-color: beige;*/
 }
 
 .list{
     width: 100%;
     height: auto;
-    background-color: tan ;
+    padding-top: 100px;
+    /*background-color: tan ;*/
 }
 .list_ul{
     width: 100%;
     height: auto;
-    background-color: aquamarine;
+    /*background-color: aquamarine;*/
 }
 .people_info{
     width: 100%;
-    height: 50px;
-    background-color: aqua;
+    height: 70px;
+    /*background-color: aqua;*/
     list-style: none;
-    margin-top: 10px;
+    margin-top: 1px;
+    border: solid 0.5px gainsboro;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .info_block{
     width: 100%;
     height: 100%;
-    background-color: chartreuse;
+    white-space:nowrap;/*内容横向排列不换行*/
+    overflow-x: scroll;
+    overflow-y: hidden;
+    /*background-color: chartreuse;*/
 }
+ ::-webkit-scrollbar{
+display:none;
+}
+ .p_img{
+     /*display: inline-block;*/
+     width: 70px;
+     height: 70px;
+     float: left;
+     background-color:#efedea;
+ }
+ .p_name{
+     /*display:inline-block;*/
+     width: 200px;
+     height: 70px;
+     float: left;
+     /*border-right: solid 0.5px gray;*/
+     font-size: 24px;
+     text-align: left;
+     padding-left: 5px;
+     line-height: 70px;
+     /*float: left;*/
+
+ }
+ .p_age, .p_sex, .p_interaction, .p_frequency, .p_untouchday, .p_totaltouch{
+     /*display:inline-block;*/
+     width: 50px;
+     height: 70px;
+     text-align: center;
+     line-height: 70px;
+     float: left;
+ }
+ .p_interaction, .p_frequency, .p_untouchday, .p_totaltouch{
+     width: 14%;
+     white-space:nowrap;/*内容横向排列不换行*/
+ }
+ .p_interaction p, .p_frequency p, .p_untouchday p, .p_totaltouch p{
+     display: inline;
+     font-size: 20px;
+     color:#FF7268 ;
+ }
+ .p_totalscore{
+     width: auto;
+     height: 70px;
+     text-align: right;
+     line-height: 70px;
+     float: right;
+     margin-right: 20px;
+     font-size: 28px;
+     color: #FF7268;
+ }
+ .end_line{
+     width: 100%;
+     height: 100px;
+     line-height: 50px;
+     color:  gray;
+     text-align: center;
+ }

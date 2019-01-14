@@ -4,10 +4,10 @@
 @AUTHOR:Joselyn
 @CONTACT:zhaojing17@foxmail.com
 @SOFTWERE:PyCharm
-@FILE:main.py
-@TIME:2018/12/28 08:33
+@FILE:testfile.py
+@TIME:2019/1/12 10:44
 @DES:
 '''
 
-if __name__ == "__main__":
-    print "hello zhaojing"
+
+import MySQLdb
