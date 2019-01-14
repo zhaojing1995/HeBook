@@ -26,6 +26,7 @@ body{
     height: 50px;
     background-color: #FAFAFA;
     border-bottom: solid 0.1px #efedea;
+
 }
 .left_fun, .head_title, .right_fun{
     position: relative;
@@ -35,15 +36,16 @@ body{
     margin-top: 15px;
 }
 .left_fun, .right_fun{
-    width: 10%;
-    font-size: 12px;
+    width: 15%;
+    /*font-size: 12px;*/
     text-align: center;
     line-height: 30px;
     color: #FF7268;
 }
 .head_title{
-    width: 80%;
+    width: 70%;
     color: grey;
+     font-size: 18px;
     text-align: center;
     line-height: 30px;
 }
