@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     border: none;
-    font-size: 24px;
+    font-size: 16px;
     color: gray;
 }
 ::-webkit-scrollbar{
@@ -25,7 +25,27 @@ body{
     width: 375px;
     height: 50px;
     background-color: #FAFAFA;
-    border-bottom: solid 0.1px gray;
+    border-bottom: solid 0.1px #efedea;
+}
+.left_fun, .head_title, .right_fun{
+    position: relative;
+    display: inline-block;
+    float: left;
+    height: 35px;
+    margin-top: 15px;
+}
+.left_fun, .right_fun{
+    width: 10%;
+    font-size: 12px;
+    text-align: center;
+    line-height: 30px;
+    color: #FF7268;
+}
+.head_title{
+    width: 80%;
+    color: grey;
+    text-align: center;
+    line-height: 30px;
 }
 .footer{
     position: fixed;
@@ -33,7 +53,7 @@ body{
     height: 50px;
     bottom: 0px;
     background-color: #FAFAFA;
-    border-top: solid 0.1px gray;
+    border-top: solid 0.1px #efedea;
 }
 .main{
     position: absolute;
