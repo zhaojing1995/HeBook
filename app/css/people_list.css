@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 16px;
+    color: gray;
+}
+body{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+::-webkit-scrollbar{
+display:none;
+}
+.lables_bar{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: #FAFAFA;
+}
+/*ul{*/
+    /*list-style: none;*/
+/*}*/
+.lables_bar ul{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    white-space:nowrap;/*内容横向排列不换行*/
+    overflow-x: scroll;
+    /*overflow-y: hidden;*/
+}
+/*所有的ul都没有样式*/
+.lable{
+    position: relative;
+    top: 0px;
+    display: inline-block;
+    list-style: none;
+    min-width: 40px;
+    width: auto;
+    height: 30px;
+    background-color: white;
+    margin: 5px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 30px;
+    color: #FF7268;
+}
+/*.lable p{*/
+    /*display:inline;*/
+/*}*/
