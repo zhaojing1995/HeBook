@@ -9,6 +9,7 @@ body{
     width: 100%;
     height: 100%;
     display: block;
+    overflow: hidden;
 }
 ::-webkit-scrollbar{
 display:none;
@@ -55,7 +56,7 @@ display:none;
     width: 325px;
 }
 .flag_sort{
-        position: fixed;
+    position: fixed;
     top: 40px;
     width: 50px;
     height: 40px;
@@ -67,6 +68,33 @@ display:none;
     color: #FF7268;
 }
 
-/*.lable p{*/
-    /*display:inline;*/
+.people_list{
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: 100%;
+    /*overflow: scroll;*/
+    background-color: grey;
+}
+.people_list ul{
+    position: relative;
+    width: 100%;
+    height: auto;
+    /*overflow:scroll;*/
+}
+.people_one{
+    list-style: none;
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 5px;
+    border-bottom:solid 0.1px #efedea;
+}
+/*.p_img{*/
+    /*position: relative;*/
+    /*width: 80px;*/
+    /*height: 80px;*/
+    /*margin: 10px;*/
+    /*background-color: grey;*/
 /*}*/
+
