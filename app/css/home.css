@@ -26,6 +26,7 @@ body{
     height: 50px;
     background-color: #FAFAFA;
     border-bottom: solid 0.1px #efedea;
+    z-index: 100;
 
 }
 .left_fun, .head_title, .right_fun{
@@ -56,11 +57,12 @@ body{
     bottom: 0px;
     background-color: #FAFAFA;
     border-top: solid 0.1px #efedea;
+    z-index:100;
 }
 .main{
     position: absolute;
     top: 50px;
     width: 100%;
-    min-height: 800px;
+    min-height: 700px;
     /*background-color: #FF7268;*/
 }
