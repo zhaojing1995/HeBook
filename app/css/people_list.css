@@ -132,12 +132,12 @@ display:none;
 
 }
 .p_info .row3{
-    background-color: chartreuse;
+    /*background-color: chartreuse;*/
     height: 20px;
 
 }
 .p_info .row4{
-    background-color: darkgrey;
+    /*background-color: darkgrey;*/
     height: 20px;
 
 }
@@ -187,6 +187,15 @@ display:none;
     color: dimgrey;
 
 }
+.p_create_time p, .p_update_time p{
+    color: darkgrey;
+    font-size: 11px;
+}
+.p_create_time, .p_update_time{
+    color: darkgrey;
+    font-size: 10px;
+}
+
 /*.p_untouchday{*/
 
 /*}*/
