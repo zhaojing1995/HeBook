@@ -17,3 +17,5 @@ class PEOPLE():
 
     def set_age(self,age):
         self.age=age
+
+
