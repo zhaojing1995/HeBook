@@ -5,25 +5,23 @@
 @CONTACT:zhaojing17@foxmail.com
 @HOME_PAGE:joselynzhao.top
 @SOFTWERE:PyCharm
-@FILE:User.py
-@TIME:2019/5/15 22:15
+@FILE:Contactor.py
+@TIME:2019/5/15 23:18
 @DES:
 '''
 from support import *
 
-class User():
-    def __inti__(self,id,name,password):
-        self.UserID = id
+class Contactor():
+    def __init__(self,id,name,userid):
+        self.ContactorID = id
         self.Name = name
-        self.Password = password
+        self.UserID = userid
         self.CreateTime = get_current_time()
+        self.InteractionID = id
 
-    '''set methods'''
+    '''------------------set method-------------------'''
     def set_Name(self,name):
-        self.Name = name #前端来判断前后命名是否相同 和是否合法
-
-    def set_Password(self,password):
-        self.Password = password
+        self.Name = name
 
     def set_Gender(self,gender):
         self.Gender = gender
@@ -52,8 +50,6 @@ class User():
     def set_Marriage(self,marriage):
         self.Marriage = marriage
 
-    def set_updata(self): # 更新所有的数据
+    def set_updata(self): #更新所有的项目
         self.UpdateTime = get_current_time()
         # 执行数据库操作
-
-    '''其他功能'''
