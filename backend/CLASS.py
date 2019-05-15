@@ -8,7 +8,7 @@
 @TIME:2019/1/15 21:57
 @DES:
 '''
-
+from support import *
 
 class PEOPLE():
     def __init__(self,id,name):
@@ -17,5 +17,14 @@ class PEOPLE():
 
     def set_age(self,age):
         self.age=age
+
+
+
+
+
+
+
+
+
 
 
