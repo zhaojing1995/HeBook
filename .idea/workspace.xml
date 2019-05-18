@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91443901-9cf1-4239-aac2-a32fd7a2bd04" name="Default" comment="test work detail update">
-      <change afterPath="$PROJECT_DIR$/backend/CLASS/Job.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/CLASS/JobDsc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/CLASS/Like.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/CLASS/Remark.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/CLASS/UScocialAccount.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Peopel_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Peopel_test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/DATABASE/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/DATABASE/User.py" afterDir="false" />
-    </list>
+    <list default="true" id="91443901-9cf1-4239-aac2-a32fd7a2bd04" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,8 +131,8 @@
       <file leaf-file-name="Job.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/CLASS/Job.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+            <state relative-caret-position="405">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -496,7 +485,14 @@
       <option name="project" value="LOCAL" />
       <updated>1547363079996</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Class :&#10;JobDsc.py  &#10;Like.py&#10;Job.py&#10;Remark.py&#10;UScocialAccount.py">
+      <created>1558186396791</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1558186396792</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -578,7 +574,8 @@
     <MESSAGE value="test git branch" />
     <MESSAGE value="test git branch nn" />
     <MESSAGE value="test work detail update" />
-    <option name="LAST_COMMIT_MESSAGE" value="test work detail update" />
+    <MESSAGE value="Class :&#10;JobDsc.py  &#10;Like.py&#10;Job.py&#10;Remark.py&#10;UScocialAccount.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Class :&#10;JobDsc.py  &#10;Like.py&#10;Job.py&#10;Remark.py&#10;UScocialAccount.py" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/web/js/home.js">
@@ -953,8 +950,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/CLASS/Job.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+        <state relative-caret-position="405">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
