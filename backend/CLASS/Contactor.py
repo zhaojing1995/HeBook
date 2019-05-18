@@ -75,7 +75,8 @@ class Contactor():
         self._PassiveCount +=1
 
     def _update_ActiveDay(self): #有效天数
-        if(self._ActiveDay >= config["validata_days"])
+        if(self._ActiveDay >= config["validata_days"]):
+            pass
 
     def _update_TotalScore(self): #更新得分
         level_contro = (6-self._Level)*10
