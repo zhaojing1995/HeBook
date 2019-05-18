@@ -10,14 +10,23 @@
 @DES:
 '''
 from support import *
+from config import *
 
 class Contactor():
-    def __init__(self,id,name,userid):
-        self.ContactorID = id
+    def __init__(self,id,name,userid,level):
+        self.ContactorID = id  #cannot change
         self.Name = name
         self.UserID = userid
         self.CreateTime = get_current_time()
-        self.InteractionID = id
+
+
+        '''下面是Interaction的内容'''
+        self._InteractionID = id  #cannot change
+        self._Level = level
+        self._ProactiveCount = 0
+        self._PassiveCount = 0
+        self._ActiveDay = 1
+
 
     '''------------------set method-------------------'''
     def set_Name(self,name):
@@ -53,3 +62,29 @@ class Contactor():
     def set_updata(self): #更新所有的项目
         self.UpdateTime = get_current_time()
         # 执行数据库操作
+
+
+    '''---------------下面是关于Interaction----------------'''
+    def set_Level(self,level): #修改level
+        self._Level = level
+
+    def _update_ProactiveCount(self): #主动联系次数
+        self._ProactiveCount +=1
+
+    def _update_PassiveCount(self): #被动联系次数
+        self._PassiveCount +=1
+
+    def _update_ActiveDay(self): #有效天数
+        if(self._ActiveDay >= config["validata_days"])
+
+    def _update_TotalScore(self): #更新得分
+        level_contro = (6-self._Level)*10
+        frequ_contro = (self._ProactiveCount+self._PassiveCount)*50/self._ActiveDay
+        self._TotalScore = level_contro+frequ_contro
+        if(self._TotalScore>100):
+            return {'error':'error！总分大于100分！'}
+
+    def _update_UntouchDay(self):
+        pass
+
+
