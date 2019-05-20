@@ -33,6 +33,7 @@ class Like():
         self.CreatorID = creatorid
 
 
-    #def set_updata(self): # 更新所有的数据
+    def set_updata(self): # 更新所有的数据
+        return 0
 
     '''其他功能'''
