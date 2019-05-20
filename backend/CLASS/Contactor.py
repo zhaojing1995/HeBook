@@ -63,6 +63,14 @@ class Contactor():
         self.UpdateTime = get_current_time()
         # 执行数据库操作
 
+    '''---------------关于统计信息的整体 自动更新-------------'''
+    def auto_update(self):
+        self._update_ActiveDay()
+        self._update_PassiveCount()
+        self._update_ProactiveCount()
+        self._update_TotalScore()
+        self._update_UntouchDay()
+
     '''---------------下面是关于Interaction----------------'''
 
     def set_Level(self, level):  # 修改level
@@ -77,6 +85,8 @@ class Contactor():
     def _update_ActiveDay(self):  # 有效天数
         if (self._ActiveDay >= config["validata_days"]):
             pass
+        else:
+            self._ActiveDay +=1
 
     def _update_TotalScore(self):  # 更新得分
         level_contro = (6 - self._Level) * 10

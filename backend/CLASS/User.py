@@ -12,7 +12,7 @@
 from support import *
 
 class User():
-    def __inti__(self,id,name,password):
+    def __init__(self,id,name,password):
         self.UserID = id
         self.Name = name
         self.Password = password
