@@ -38,3 +38,4 @@ class Job():
     def setContactorID(self,contactorid):
         self.ContactorID = contactorid
 
+
