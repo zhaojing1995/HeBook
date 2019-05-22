@@ -1,4 +1,5 @@
-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import pymysql
 import types
 
@@ -27,7 +28,7 @@ sql="""CREATE TABLE IF NOT EXISTS `user` (
 
 cursor.execute(sql)
 
-# 插入语句
+#插入语句
 def INSERT(db_connect, table_name, argv_list, value_list):
     """
     函数功能： 往特定数据库增加数据
@@ -83,8 +84,8 @@ def MODIFIED(db_connect, table_name, id, argv_list, value_list):
         argv_list : 字符串列表                          属性                          
         value_list: 字符串列表                          属性对应值
     返回值
-        插入成功: 返回 True
-        插入失败: 返回 False
+        修改成功: 返回 True
+        修改失败: 返回 False
     """
     key_value_string = "%s=%s"%(argv_list[0], value_list[0])
 
@@ -114,8 +115,8 @@ def DELETE(db_connect, table_name, id):
         table_name: 字符串                              表的名称
         id        : int                                属性      
     返回值
-        插入成功: 返回 True
-        插入失败: 返回 False
+        删除成功: 返回 True
+        删除失败: 返回 False
     """
     delete_sql = "delete from %s where id='%s'"%(table_name, id)
     
@@ -128,8 +129,20 @@ def DELETE(db_connect, table_name, id):
         db_connect.rollback()
         return False
 
-
-INSERT(db, 'user', ['name','age'], ['test7',7])
+def FIND(db_connect, table_name, field, conditions):
+    """
+    函数功能： 在特定数据库寻找满足条件的数据
+    参数：
+        # 参数名   | 参数类型                       |       解释
+        db_connect: pymysql.connect()方法的返回值       数据库链接
+        table_name: 字符串                              表的名称
+        field     : 列表                                需要查询的字段
+        conditions: 列表                                条件      
+    返回值
+        查找成功: 返回 True
+        查找失败: 返回 False
+    """
+    pass
 
 # MODIFIED(db, )
 
@@ -145,17 +158,17 @@ sql="""INSERT INTO user (`name`, `age`) VALUES
 try:
     #执行SQL语句
     cursor.execute(sql)
-    # cursor.execute(insert_sql)
-    #提交到数据库执行
     db.commit()
 except:
     #如果发生错误则回滚
     db.rollback()
 
-#删除
+# 插入
+INSERT(db, 'user', ['name','age'], ['test7',7])
+# 删除
 DELETE(db, 'user', 2)
 
-#修改
+# 修改
 id = 3
 sql = """update user set name='test37', age=31 WHERE id=%s;"""%(id)
 
