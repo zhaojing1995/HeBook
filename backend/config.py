@@ -11,5 +11,7 @@
 '''
 
 config = {
-    "validata_days": 365
+    "validata_days": 365,
+    "server_ip":"192.168.0.77",
+    "database":"hebook"
 }

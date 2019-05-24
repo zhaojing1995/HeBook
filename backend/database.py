@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import pymysql
 import types
+import time
+from config import *
 
 #插入语句
 def INSERT(table_name, argv_list, value_list):
@@ -18,7 +20,7 @@ def INSERT(table_name, argv_list, value_list):
         插入失败: 返回 False
     """
     # 构造表
-    table_string = "%s"%table_name
+    table_string = " %s "%table_name
 
     # 构造属性
     argc_string = "`%s`"%argv_list[0]
@@ -42,11 +44,11 @@ def INSERT(table_name, argv_list, value_list):
     # 定义SQL语句
     insert_sql = "INSERT INTO "+table_string + argc_string + " VALUES " + value_string
 
-    db_connect = pymysql.connect(host="127.0.0.1", 
+    db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
     user="root", 
     password="123456", 
-    database="python")
+    database=config["database"])
 
     cursor = db_connect.cursor()
     try:
@@ -90,11 +92,11 @@ def MODIFIED(table_name, id, argv_list, value_list):
 
     update_sql = "UPDATE %s SET %s WHERE id=%s"%(table_name, key_value_string, id)
 
-    db_connect = pymysql.connect(host="127.0.0.1", 
+    db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
     user="root", 
     password="123456", 
-    database="python")
+    database=config["database"])
 
     cursor = db_connect.cursor()
     try:
@@ -122,11 +124,11 @@ def DELETE(table_name, id):
     """
     delete_sql = "delete from %s where id='%s'"%(table_name, id)
     
-    db_connect = pymysql.connect(host="127.0.0.1", 
+    db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
     user="root", 
     password="123456", 
-    database="python")
+    database=config["database"])
 
     cursor = db_connect.cursor()
     try:
@@ -163,11 +165,11 @@ def FIND(table_name, field, conditions):
 
     select_sql = "select from %s where id='%s'"%(table_name, id)
     
-    db_connect = pymysql.connect(host="127.0.0.1", 
+    db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
     user="root", 
     password="123456", 
-    database="python")
+    database=config["database"])
 
     cursor = db_connect.cursor()
     try:
@@ -183,25 +185,25 @@ def get_current_id(table_name):
 
 
 if __name__ == "__main__":
-    db = pymysql.connect(host="127.0.0.1", 
+    db = pymysql.connect(host=config["server_ip"], 
         port=3306,
         user="root", 
         password="123456", 
-        database="python")
+        database=config["database"])
 
     cursor = db.cursor()
 
-    cursor.execute("drop table if exists user")
-    sql="""CREATE TABLE IF NOT EXISTS `user` ( 
-        `id` int(11) NOT NULL AUTO_INCREMENT, 
-        `name` varchar(255) NOT NULL, 
-        `age` int(11) NOT NULL,
-        `bin_da` binary(255),
-        PRIMARY KEY (`id`) 
-        ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=0"""
+    # cursor.execute("drop table if exists user")
+    # sql="""CREATE TABLE IF NOT EXISTS `user` ( 
+    #     `id` int(11) NOT NULL AUTO_INCREMENT, 
+    #     `name` varchar(255) NOT NULL, 
+    #     `age` int(11) NOT NULL,
+    #     `bin_da` binary(255),
+    #     PRIMARY KEY (`id`) 
+    #     ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=0"""
 
 
-    cursor.execute(sql)
+    # cursor.execute(sql)
 
     #user插入数据
     sql="""INSERT INTO user (`name`, `age`) VALUES 
@@ -211,48 +213,42 @@ if __name__ == "__main__":
     ('test4', 4), 
     ('test5', 5), 
     ('test6', 6);"""  
+    t = time.strftime('%Y-%m-%d %H:%M:%S')
+    INSERT('t_contactor',['ContactorID','Name','UserID','CreateTime'],[2424,'Kitten',32432,t])
 
-    try:
-        #执行SQL语句
-        cursor.execute(sql)
-        db.commit()
-    except:
-        #如果发生错误则回滚
-        db.rollback()
+    # # 插入
+    # INSERT('user', ['name','age'], ['test7',7])
+    # # INSERT(db, 'user', ['name','age', 'bin_da'], ['test8', 8, '82364873628765837658736587'])
+    # INSERT('user', ['name','age', 'bin_da'], ['test8', 8, 2342])
 
-    # 插入
-    INSERT('user', ['name','age'], ['test7',7])
-    # INSERT(db, 'user', ['name','age', 'bin_da'], ['test8', 8, '82364873628765837658736587'])
-    INSERT('user', ['name','age', 'bin_da'], ['test8', 8, 2342])
+    # MODIFIED('user', 5, ['name'], ['Lony'])
 
-    MODIFIED('user', 5, ['name'], ['Lony'])
+    # # 删除
+    # DELETE('user', 2)
 
-    # 删除
-    DELETE('user', 2)
+    # # 修改
+    # id = 3
+    # sql = """update user set name='test37', age=31 WHERE id=%s;"""%(id)
 
-    # 修改
-    id = 3
-    sql = """update user set name='test37', age=31 WHERE id=%s;"""%(id)
+    # try:
+    #     cursor.execute(sql)
+    #     db.commit()
+    # except:
+    #     db.rollback()
 
-    try:
-        cursor.execute(sql)
-        db.commit()
-    except:
-        db.rollback()
+    # #查询
+    # cursor.execute("select * from user")
 
-    #查询
-    cursor.execute("select * from user")
-
-    results = cursor.fetchall()
-    # 关于存储一年内联系天数的方法，存储binary信息，在python后台中使用int.from_bytes将其转换
-    # 成int类型数据进行处理
-    for row in results:
-        name = row[1]
-        age = row[2]
-        # print(type(name), type(age), type(row[3]))
-        bi = row[3]
-        # if bi is not None:
-        #     print(type(row[3]))
-        #     print(bi)
-        #     bi = int(bi, 16)
-        print("name=%s, age=%s, data=%s"%(name, age, bi))
+    # results = cursor.fetchall()
+    # # 关于存储一年内联系天数的方法，存储binary信息，在python后台中使用int.from_bytes将其转换
+    # # 成int类型数据进行处理
+    # for row in results:
+    #     name = row[1]
+    #     age = row[2]
+    #     # print(type(name), type(age), type(row[3]))
+    #     bi = row[3]
+    #     # if bi is not None:
+    #     #     print(type(row[3]))
+    #     #     print(bi)
+    #     #     bi = int(bi, 16)
+    #     print("name=%s, age=%s, data=%s"%(name, age, bi))
