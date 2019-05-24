@@ -18,7 +18,7 @@ class Flag():
         self.FlagID = flagid
         self.FlagName = flagname
         self.CreatorID = creatorid
-        self.CreateTime = get_current_time()
+        # self.CreateTime = get_current_time()
 
     def IsDelete(self,isdelete):
         self.IsDelete = isdelete

@@ -19,6 +19,6 @@ class CSocialAccount():
         self.APP = app
         self.Account = account
         self.ContactorID = contactorid
-        self.CreateTime = get_current_time()
+        # self.CreateTime = get_current_time()
 
    # def Updatetime(self):

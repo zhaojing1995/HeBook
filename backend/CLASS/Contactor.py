@@ -21,8 +21,10 @@ class Contactor():
         self.ContactorID = db.get_current_id("Contactor")  # cannot change
         self.Name = name
         self.UserID = userid
-        self.CreateTime = sp.get_current_time()
+        # self.CreateTime = sp.get_current_time()
         Interaction(level,self.ContactorID)   #初始化一个interaction
+        db.INSERT('t_contactor',['ContactorID','Name','UserID','InteractionID'],
+                  [self.ContactorID,self.Name,self.UserID,self.ContactorID])
 
     '''------------------set method-------------------'''
 
@@ -56,9 +58,9 @@ class Contactor():
     def set_Marriage(self, marriage):
         self.Marriage = marriage
 
-    def set_updata(self):  # 更新所有的项目
-        self.UpdateTime = get_current_time()
-        # 执行数据库操作
+    # def set_updata(self):  # 更新所有的项目
+    #     self.UpdateTime =
+    #     # 执行数据库操作
 
 
 

@@ -16,7 +16,7 @@ class Remark():
         self.RemarkID = remarkid
         self.Content = content
         self.ContactorID = contactorid
-        self.CreateTime = get_current_time()
+        # self.CreateTime = get_current_time()
 
     def set_Content(self,content):
         self.Content =  content

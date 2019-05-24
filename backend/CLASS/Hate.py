@@ -17,7 +17,7 @@ class Hete():
     def __init__(self,id,hatename,creatorid,iscreatorhave=False):
         self.HateID = id   #no change
         self.HateName = hatename
-        self.CreateTime = get_current_time()  #no change
+        # self.CreateTime = get_current_time()  #no change
         self.isDelete = False
         self.CreatorID = creatorid   #no change
         self.isCreatorHave = iscreatorhave
