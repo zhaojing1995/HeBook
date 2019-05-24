@@ -9,23 +9,20 @@
 @TIME:2019/5/15 23:18
 @DES:
 '''
-from support import *
+# from CLASS import *
+from Interaction import *
+# from support import *
 from config import *
-
+import support as sp
+import database as db
 
 class Contactor():
-    def __init__(self, id, name, userid, level):
-        self.ContactorID = id  # cannot change
+    def __init__(self, name, userid, level):
+        self.ContactorID = db.get_current_id("Contactor")  # cannot change
         self.Name = name
         self.UserID = userid
-        self.CreateTime = get_current_time()
-
-        '''下面是Interaction的内容'''
-        self._InteractionID = id  # cannot change
-        self._Level = level
-        self._ProactiveCount = 0  # 主动联系次数
-        self._PassiveCount = 0  # 被动联系次数
-        self._ActiveDay = 1  # 有效日期
+        self.CreateTime = sp.get_current_time()
+        Interaction(level,self.ContactorID)   #初始化一个interaction
 
     '''------------------set method-------------------'''
 
@@ -63,56 +60,10 @@ class Contactor():
         self.UpdateTime = get_current_time()
         # 执行数据库操作
 
-    '''---------------关于统计信息的整体 自动更新-------------'''
-    def auto_update(self):
-        self._update_ActiveDay()
-        self._update_PassiveCount()
-        self._update_ProactiveCount()
-        self._update_TotalScore()
-        self._update_UntouchDay()
 
-    '''---------------下面是关于Interaction----------------'''
 
-    def set_Level(self, level):  # 修改level
-        self._Level = level
 
-    def _update_ProactiveCount(self):  # 主动联系次数
-        self._ProactiveCount += 1
 
-    def _update_PassiveCount(self):  # 被动联系次数
-        self._PassiveCount += 1
 
-    def _update_ActiveDay(self):  # 有效天数
-        if (self._ActiveDay >= config["validata_days"]):
-            pass
-        else:
-            self._ActiveDay +=1
-
-    def _update_TotalScore(self):  # 更新得分
-        level_contro = (6 - self._Level) * 10
-        frequ_contro = (self._ProactiveCount + self._PassiveCount) * 50 / self._ActiveDay
-        self._TotalScore = level_contro + frequ_contro
-        if (self._TotalScore > 100):
-            return {'error': 'error！总分大于100分！'}
-
-    def _update_UntouchDay(self):
-        pass
-
-    '''------------关于保护变量的get方法------------------'''
-
-    def get_InteractionID(self):
-        return self._InteractionID
-
-    def get_Level(self):
-        return self._Level
-
-    def get_ProactiveCount(self):
-        return self._ProactiveCount
-
-    def get_PassiveCount(self):
-        return self._PassiveCount
-
-    def get_ActiveDay(self):
-        return self._ActiveDay
 
 

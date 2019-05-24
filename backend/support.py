@@ -11,4 +11,4 @@
 '''
 
 def get_current_time():
-    return 1
+        return 1
