@@ -14,7 +14,7 @@ from support import *
 from config import *
 
 class Flag():
-    def __init__(self,flagid,flagname,creatorid)
+    def __init__(self,flagid,flagname,creatorid):
         self.FlagID = flagid
         self.FlagName = flagname
         self.CreatorID = creatorid
