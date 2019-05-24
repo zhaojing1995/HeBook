@@ -10,5 +10,5 @@
 @DES:  为class 的操作提供支持
 '''
 
-def get_current_time():
-        return 1
+# def get_current_time():
+#         return 1

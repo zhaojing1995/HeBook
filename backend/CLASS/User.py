@@ -16,8 +16,6 @@ class User():
         self.UserID = id
         self.Name = name
         self.Password = password
-        self.CreateTime = get_current_time()
-
 
     '''set methods'''
     def set_Name(self,name):
@@ -54,8 +52,8 @@ class User():
     def set_Marriage(self,marriage):
         self.Marriage = marriage
 
-    def set_updata(self): # 更新所有的数据
-        self.UpdateTime = get_current_time()
-        # 执行数据库操作
+    # def set_updata(self): # 更新所有的数据
+    #     self.UpdateTime = get_current_time()
+    #     # 执行数据库操作
 
     '''其他功能'''

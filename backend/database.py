@@ -42,11 +42,11 @@ def INSERT(table_name, argv_list, value_list):
     # 定义SQL语句
     insert_sql = "INSERT INTO "+table_string + argc_string + " VALUES " + value_string
 
-    db_connect = pymysql.connect(host="127.0.0.1", 
+    db_connect = pymysql.connect(host="192.168.0.77",
     port=3306,
     user="root", 
     password="123456", 
-    database="python")
+    database="hebook")
 
     cursor = db_connect.cursor()
     try:
