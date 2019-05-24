@@ -31,3 +31,7 @@ class Hete():
 
     def set_isCreatorHave(self,ishave):
         self.isCreatorHave = ishave
+
+
+
+
