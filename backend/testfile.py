@@ -11,6 +11,8 @@
 
 
 from database import  *
+import Contactor
+from Contactor import *
 
 if __name__ =="__main__":
-    test_database()
+    contactor = Contactor('zhaojing',2,5)

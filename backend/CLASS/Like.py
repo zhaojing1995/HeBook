@@ -15,7 +15,7 @@ class Like():
     def __init__(self,likeid,likename,iscreatorhave,creatorid,):
         self.LikeID = likeid
         self.LikeName = likename
-        self.CreateTime = get_current_time()
+        # self.CreateTime = get_current_time()
         self.CreatorID = creatorid
         self.isCreatorHave = iscreatorhave
 
@@ -33,7 +33,7 @@ class Like():
         self.CreatorID = creatorid
 
 
-    def set_updata(self): # 更新所有的数据
-        return 0
+    # def set_updata(self): # 更新所有的数据
+    #     return 0
 
     '''其他功能'''

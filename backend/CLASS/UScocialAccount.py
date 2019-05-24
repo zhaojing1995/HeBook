@@ -17,7 +17,7 @@ class UScocialAccount():
         self.Account = account
         self.Authority = authority
         self.UserID = userid
-        self.CreateTime = get_current_time()
+        # self.CreateTime = get_current_time()
 
         '''set methods'''
     def set_APP(self, app):
@@ -30,9 +30,9 @@ class UScocialAccount():
         self.Authority = authority
 
 
-    def set_update(self): # 更新所有的数据
-        self.UpdateTime = get_current_time()
-        # 执行数据库操作
+    # def set_update(self): # 更新所有的数据
+    #     self.UpdateTime = get_current_time()
+    #     # 执行数据库操作
 
     '''其他功能'''
 
