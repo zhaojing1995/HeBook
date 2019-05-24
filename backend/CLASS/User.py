@@ -18,9 +18,11 @@ class User():
         self.Password = password
         self.CreateTime = get_current_time()
 
+
     '''set methods'''
     def set_Name(self,name):
         self.Name = name #前端来判断前后命名是否相同 和是否合法
+        # 写入数据库
 
     def set_Password(self,password):
         self.Password = password
