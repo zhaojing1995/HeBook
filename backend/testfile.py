@@ -12,7 +12,17 @@
 
 from database import  *
 from Contactor import *
+from User import *
 
 if __name__ =="__main__":
-    contactor = Contactor('zhaojing',2,5)
-    contactor.set_Name("zhaoyuyu")
+
+    #
+    # contactor = Contactor('zhaojing',2,5)
+    # contactor.set_Name("zhaoyuyu")
+
+    config={
+        "Gender":0,
+        "PhoneNumber1":17943233523,
+        "JobState":2
+    }
+    user = User("zhaoyuyu","794253",config)
