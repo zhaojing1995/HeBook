@@ -13,7 +13,7 @@ from support import *
 import database as db
 
 class User():
-    def __init__(self,id,name,password):
+    def __init__(self,id,name,password,config):
         self.UserID = id
         self.Name = name
         self.Password = password
