@@ -96,7 +96,7 @@ def MODIFIED(table_name, id, argv_list, value_list):
     else:
         key_value_string += "%s=%s"%(argv_list[last_index], value_list[last_index])
 
-    update_sql = "UPDATE %s SET %s WHERE id=%s"%(table_name, key_value_string, id)
+    update_sql = "UPDATE %s SET %s WHERE %s=%s"%(table_name, key_value_string, table_ID[table_name], id)
 
     db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
