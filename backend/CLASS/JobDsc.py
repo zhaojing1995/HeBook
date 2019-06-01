@@ -11,12 +11,14 @@
 '''
 
 from support import *
+import database as db
 
 class JobDsc():
     def __init__(self,jobdscid,dsccontent,jobid):
         self.JobDscID = jobdscid
         self.DscContent = dsccontent
         self.JobID =  jobid
+        db.INSERT('t_jobsdc',['JobDscID','DscContent','JobID'],[self.JobDscID,self.DscContent,self.JobID])
 
     def set_DscContent(self,dsccontent):
         self.DscContent = dsccontent

@@ -10,12 +10,17 @@
 @DES:
 '''
 from support import *
+import database as db
 
 class Job():
     def __init__(self,jobid,contactorid,userid):
         self.JobID = jobid
         self.ContactorID = contactorid
         self.UserID = userid
+
+        db.INSERT('t_job',['JobID','ContactorID','UserID'],[self.JobID,self.ContactorID,self.UserID])
+
+
 
     def set_StartTime(self,starttime):
         self.StartTime = starttime

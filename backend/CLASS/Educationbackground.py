@@ -12,6 +12,7 @@
 
 from support import *
 from config import *
+import database as db
 
 class Educationbackground():
     def __init__(self,id, degree,school,contactorid,userid):
@@ -20,6 +21,9 @@ class Educationbackground():
         self.School  = school
         self.ContactorID =contactorid    #no change
         self.UserID = userid      #no change
+        
+        db.INSERT('t_educationbackground',['EduBackID','Degree','School','ContactorID','UserID'],[self.EduBackId,self.Degree,self.School,self.ContactorID,self.UserID])
+
 
     '''------------set methods-------------'''
     def set_Degree(self,degree):

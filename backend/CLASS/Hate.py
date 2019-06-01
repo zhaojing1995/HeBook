@@ -12,6 +12,7 @@
 
 from support import *
 from config import *
+import database as db
 
 class Hete():
     def __init__(self,id,hatename,creatorid,iscreatorhave=False):
@@ -21,6 +22,11 @@ class Hete():
         self.isDelete = False
         self.CreatorID = creatorid   #no change
         self.isCreatorHave = iscreatorhave
+
+        db.INSERT('t_hate',['HateID','HateName','isDelete','CreatorID','isCreatorHave'],
+                  [self.HateID,self.HateName,self.isDelete,self.CreatorID,self.isCreatorHave])
+
+
 
     '''----------------set methods---------------------'''
     def set_HateName(self,hatename):

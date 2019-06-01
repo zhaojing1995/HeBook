@@ -12,6 +12,7 @@
 
 from support import *
 from config import *
+import database as db
 
 class CSocialAccount():
     def __init__(self,spcountid,app,account,contactorid):
@@ -19,6 +20,9 @@ class CSocialAccount():
         self.APP = app
         self.Account = account
         self.ContactorID = contactorid
+
+        db.INSERT('t_csocialaccount',['SPcountID','APP','Account','ContactorID'],[self.SPcountID,self.APP,self.Account,self.ContactorID])
+
         # self.CreateTime = get_current_time()
 
    # def Updatetime(self):
