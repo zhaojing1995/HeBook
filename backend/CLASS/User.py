@@ -10,12 +10,14 @@
 @DES:
 '''
 from support import *
+import database as db
 
 class User():
     def __init__(self,id,name,password):
         self.UserID = id
         self.Name = name
         self.Password = password
+        db.INSERT('t_user',['UserID','Name','Password'],[self.UserID,self.Name,self.Password])
 
     '''set methods'''
     def set_Name(self,name):

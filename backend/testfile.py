@@ -15,3 +15,4 @@ from Contactor import *
 
 if __name__ =="__main__":
     contactor = Contactor('zhaojing',2,5)
+    contactor.set_Name("zhaoyuyu")

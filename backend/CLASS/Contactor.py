@@ -23,6 +23,7 @@ class Contactor():
         self.UserID = userid
         # self.CreateTime = sp.get_current_time()
         Interaction(level,self.ContactorID)   #初始化一个interaction
+
         db.INSERT('t_contactor',['ContactorID','Name','UserID','InteractionID'],
                   [self.ContactorID,self.Name,self.UserID,self.ContactorID])
 
@@ -30,6 +31,7 @@ class Contactor():
 
     def set_Name(self, name):
         self.Name = name
+        db.MODIFIED('t_contactor',self.ContactorID,['Name'],[self.Name])
 
     def set_Gender(self, gender):
         self.Gender = gender
