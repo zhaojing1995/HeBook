@@ -187,7 +187,23 @@ def FIND(table_name, field, conditions):
         return False
 
 def get_current_id(table_name):
-    return 2333
+    db = pymysql.connect(host=config["server_ip"], 
+        port=3306,
+        user="root", 
+        password="123456", 
+        database=config["database"])
+
+    cursor = db.cursor()
+    sql="SELECT COUNT(*) FROM %s;"%table_name
+
+    try:
+        cursor.execute(sql)
+        db.commit()
+    except:
+        db.rollback()
+    results = cursor.fetchall()
+
+    return results[0][0]+1
 
 
 if __name__ == "__main__":
@@ -244,7 +260,7 @@ if __name__ == "__main__":
 
     # #查询
     # cursor.execute("select * from user")
-
+    print(get_current_id("t_contactor"))
     # results = cursor.fetchall()
     # # 关于存储一年内联系天数的方法，存储binary信息，在python后台中使用int.from_bytes将其转换
     # # 成int类型数据进行处理
