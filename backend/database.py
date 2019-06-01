@@ -26,7 +26,11 @@ def INSERT(table_name, argv_list, value_list):
     argc_string = "`%s`"%argv_list[0]
     for ii in range(1,len(argv_list)):
         argc_string += ",`%s`"%argv_list[ii]
+    argc_string += ", CreateTime"
     argc_string = "(%s)"%argc_string
+
+    # 构造时间
+    t = time.strftime('%Y-%m-%d %H:%M:%S')
 
     # 构造属性值
     value_string = ""
@@ -39,6 +43,8 @@ def INSERT(table_name, argv_list, value_list):
         value_string += "'%s'"%value_list[len(value_list)-1]
     else:
         value_string += "%s"%value_list[len(value_list)-1]
+    value_list += ", %s"%t
+
     value_string = "(%s)"%value_string
     
     # 定义SQL语句
