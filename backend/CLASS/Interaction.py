@@ -17,7 +17,7 @@ import database as db
 import database as db
 
 class Interaction():
-    def __init__(self,level,conterID):
+    def __init__(self,level,conterID,config):
         '''下面是Interaction的内容'''
         self.InteractionID = conterID  # cannot change
         self.Level = level
@@ -25,9 +25,12 @@ class Interaction():
         self.PassiveCount = 0  # 被动联系次数
         self.ActiveDay = 1  # 有效日期
         self.TouchDay = 0  #每天都会传一个值给数据库
-        db.INSERT('t_interaction',['InteractionID','Level','ProactiveCount','PassiveCount','ActiveDay','TouchDay'],
-                  [self.InteractionID,self.Level,self.ProactiveCount,self.PassiveCount,self.ActiveDay,self.TouchDay])
 
+        if not db.INSERT('t_interaction', ['InteractionID','Level','Touchday'], [self.InteractionID,self.Level,self.TouchDay]):
+            print "Insert error!"
+        else:
+            for key in config:
+                db.MODIFIED('t_interaction', self.InteractionID, [key], [config[key]])
 
     '''---------------下面是关于Interaction----------------'''
 

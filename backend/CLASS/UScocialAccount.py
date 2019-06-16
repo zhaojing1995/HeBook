@@ -10,6 +10,7 @@
 @DES:
 '''
 from support import *
+import database as db
 class UScocialAccount():
     def __init__(self,spcountid,app,account,authority,userid):
         self.SPcountID = spcountid
@@ -18,6 +19,9 @@ class UScocialAccount():
         self.Authority = authority
         self.UserID = userid
         # self.CreateTime = get_current_time()
+
+        if not db.INSERT('t_uscocialaccount',['SPcountID','APP','Account','Authority','UserID'],[self.SPcountID,self.APP,self.Account,self.Authority,self.UserID]):
+            print "Insert error! "
 
         '''set methods'''
     def set_APP(self, app):

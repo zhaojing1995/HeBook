@@ -18,7 +18,10 @@ class JobDsc():
         self.JobDscID = jobdscid
         self.DscContent = dsccontent
         self.JobID =  jobid
-        db.INSERT('t_jobsdc',['JobDscID','DscContent','JobID'],[self.JobDscID,self.DscContent,self.JobID])
+
+        if not  db.INSERT('t_jobsdc',['JobDscID','DscContent','JobID'],[self.JobDscID,self.DscContent,self.JobID]):
+            print "Insert error!"
+
 
     def set_DscContent(self,dsccontent):
         self.DscContent = dsccontent
