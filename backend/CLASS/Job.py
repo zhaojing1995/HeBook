@@ -11,20 +11,15 @@
 '''
 from support import *
 import database as db
-import database as db
+
 class Job():
-    def __init__(self,jobid,contactorid,userid,config):
+    def __init__(self,jobid,contactorid,userid):
         self.JobID = jobid
         self.ContactorID = contactorid
         self.UserID = userid
 
-       # db.INSERT('t_job',['JobID','ContactorID','UserID'],[self.JobID,self.ContactorID,self.UserID])
+        db.INSERT('t_job',['JobID','ContactorID','UserID'],[self.JobID,self.ContactorID,self.UserID])
 
-        if not db.INSERT('t_job',['JobID','ContactorID','UserID'],[self.JobID,self.ContactorID,self.UserID]):
-            print "Insert error!"
-        else:
-            for key in config:
-                db.MODIFIED('t_job', self.JobID, [key], [config[key]])
 
 
     def set_StartTime(self,starttime):

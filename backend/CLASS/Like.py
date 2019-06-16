@@ -10,19 +10,15 @@
 @DES:
 '''
 from support import *
-import database as db
+
 class Like():
-    def __init__(self,likeid,likename,iscreatorhave,creatorid,config):
+    def __init__(self,likeid,likename,iscreatorhave,creatorid,):
         self.LikeID = likeid
         self.LikeName = likename
         # self.CreateTime = get_current_time()
         self.CreatorID = creatorid
         self.isCreatorHave = iscreatorhave
-        if not db.INSERT('t_like',['LikeID','LikeName','CreatorID','isCreatorHave'],[self.LikeID,self.LikeName,self.CreatorID,self.isCreatorHave]):
-            print "Insert error!"
-        else:
-            for key in config:
-                db.MODIFIED('t_like',self.LikeID,[key],[config[key]])
+
 
     def set_isDelete(self,isdelete):
         self.IsDelete = isdelete

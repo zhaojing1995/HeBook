@@ -17,21 +17,15 @@ import support as sp
 import database as db
 
 class Contactor():
-    def __init__(self, name, userid, level,config):
+    def __init__(self, name, userid, level):
         self.ContactorID = db.get_current_id("Contactor")  # cannot change
         self.Name = name
         self.UserID = userid
         # self.CreateTime = sp.get_current_time()
         Interaction(level,self.ContactorID)   #初始化一个interaction
 
-        #db.INSERT('t_contactor',['ContactorID','Name','UserID','InteractionID'],
-      #            [self.ContactorID,self.Name,self.UserID,self.ContactorID])
-
-        if not db.INSERT('t_contactor',['ContactorID','Name','UserID'],[self.ContactorID,self.Name,self.UserID]):
-            print "Insert error!"
-        else:
-            for key in config:
-                db.MODIFIED('t_contactor', self.ContactorID,[key],[config[key]])
+        db.INSERT('t_contactor',['ContactorID','Name','UserID','InteractionID'],
+                  [self.ContactorID,self.Name,self.UserID,self.ContactorID])
 
     '''------------------set method-------------------'''
 

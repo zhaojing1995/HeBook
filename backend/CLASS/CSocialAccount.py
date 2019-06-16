@@ -23,10 +23,6 @@ class CSocialAccount():
 
         db.INSERT('t_csocialaccount',['SPcountID','APP','Account','ContactorID'],[self.SPcountID,self.APP,self.Account,self.ContactorID])
 
-        if not db.INSERT('t_csocialaccount', ['SPcountID','APP','Account','ContactorID'],[self.SPcountID,self.APP,self.ContactorID]):
-            print "Insert error!"
-
-
         # self.CreateTime = get_current_time()
 
    # def Updatetime(self):

@@ -16,20 +16,15 @@ from config import *
 import database as db
 
 class Flag():
-    def __init__(self,flagid,flagname,creatorid,config,iscreatorhave=False):
+    def __init__(self,flagid,flagname,creatorid):
         self.FlagID = flagid
         self.FlagName = flagname
         self.CreatorID = creatorid
-        self.isCreatorHave = iscreatorhave
         # self.CreateTime = get_current_time()
 
+        db.INSERT('t_flag',['FlagID','FlagName','CreatorID','isCreatorHave'],
+                  [self.FlagID,self.FlagName,self.CreatorID])
 
-        if not db.INSERT('t_flag',['FlagID','FlagName','CreatorID','isCreatorHave'],
-                  [self.FlagID,self.FlagName,self.CreatorID,self.isCreatorHave]):
-            print "Insert error!"
-        else:
-            for key in config:
-                db.MODIFIED('t_flag', self.FlagID, [key], [config[key]])
 
 
     def IsDelete(self,isdelete):

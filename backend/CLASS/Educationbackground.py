@@ -15,7 +15,7 @@ from config import *
 import database as db
 
 class Educationbackground():
-    def __init__(self,id, degree,school,contactorid,userid,config):
+    def __init__(self,id, degree,school,contactorid,userid):
         self.EduBackId = id  # no change
         self.Degree = degree
         self.School  = school
@@ -24,11 +24,6 @@ class Educationbackground():
         
         db.INSERT('t_educationbackground',['EduBackID','Degree','School','ContactorID','UserID'],[self.EduBackId,self.Degree,self.School,self.ContactorID,self.UserID])
 
-        if not  db.INSERT('t_educationbackground',['EduBackID','Degree','School','ContactorID','UserID'],[self.EduBackId,self.Degree,self.School,self.ContactorID,self.UserID]):
-            print "Insert error!"
-        else:
-            for key in config:
-                db.MODIFIED('t_educationbackground', self.EduBackId, [key], [config[key]])
 
     '''------------set methods-------------'''
     def set_Degree(self,degree):

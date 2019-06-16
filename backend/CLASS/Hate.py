@@ -23,13 +23,9 @@ class Hete():
         self.CreatorID = creatorid   #no change
         self.isCreatorHave = iscreatorhave
 
+        db.INSERT('t_hate',['HateID','HateName','isDelete','CreatorID','isCreatorHave'],
+                  [self.HateID,self.HateName,self.isDelete,self.CreatorID,self.isCreatorHave])
 
-        if not db.INSERT('t_hate',['HateID','HateName','CreatorID','isCreatorHave'],
-                  [self.HateID,self.HateName,self.isDelete,self.CreatorID,self.isCreatorHave]):
-            print "Insert error!"
-        else:
-            for key in config:
-                db.MODIFIED('t_hate', self.HateID, [key], [config[key]])
 
 
     '''----------------set methods---------------------'''
