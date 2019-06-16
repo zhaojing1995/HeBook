@@ -49,7 +49,7 @@ def INSERT(table_name, argv_list, value_list):
     
     # 定义SQL语句
     insert_sql = "INSERT INTO "+table_string + argc_string + " VALUES " + value_string
-    
+    print(insert_sql)
     db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
     user="root", 
@@ -244,7 +244,8 @@ if __name__ == "__main__":
     # print(t)
 
     # INSERT('t_contactor',['ContactorID','Name','UserID'],[2426,'Kitten',32532])
-    # MODIFIED('t_contactor', 2426, ['gender','birthdate'], [2,'1994-08-25'])
+    # MODIFIED('t_contactor', 2426, ['gender','birthdate'], [2,'1994-08-25'])\
+    print(INSERT('t_user',['userID','Name','password','bundlephone'],[1,'Kitten','32532',18570744251]))
 
     # # 插入
     # INSERT('user', ['name','age'], ['test7',7])
