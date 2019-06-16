@@ -26,7 +26,7 @@ def INSERT(table_name, argv_list, value_list):
     argc_string = "`%s`"%argv_list[0]
     for ii in range(1,len(argv_list)):
         argc_string += ",`%s`"%argv_list[ii]
-    argc_string += ", `CreateTime`"
+    argc_string += ", `CreateTime`, `UpdateTime`"
     argc_string = "(%s)"%argc_string
 
     # 构造时间
@@ -43,13 +43,13 @@ def INSERT(table_name, argv_list, value_list):
         value_string += "'%s'"%value_list[len(value_list)-1]
     else:
         value_string += "%s"%value_list[len(value_list)-1]
-    value_list += ", %s"%t
+    value_string += ", '%s', '%s'"%(t,t)
 
     value_string = "(%s)"%value_string
     
     # 定义SQL语句
     insert_sql = "INSERT INTO "+table_string + argc_string + " VALUES " + value_string
-
+    
     db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
     user="root", 
@@ -89,15 +89,20 @@ def MODIFIED(table_name, id, argv_list, value_list):
             key_value_string += "%s='%s', "%(argv_list[ii], value_list[ii])
         else:
             key_value_string += "%s=%s, "%(argv_list[ii], value_list[ii])
-    
+
     last_index = len(argv_list)-1
     if type(value_list[last_index]) == str:
         key_value_string += "%s='%s'"%(argv_list[last_index], value_list[last_index])
     else:
         key_value_string += "%s=%s"%(argv_list[last_index], value_list[last_index])
 
-    update_sql = "UPDATE %s SET %s WHERE %s=%s"%(table_name, key_value_string, table_ID[table_name], id)
+    # 构造时间
+    t = time.strftime('%Y-%m-%d %H:%M:%S')
+    key_value_string += ",%s='%s'"%("`UpdateTime`", t)
 
+    # 定义更新语句
+    update_sql = "UPDATE %s SET %s WHERE %s=%s"%(table_name, key_value_string, table_ID[table_name], id)
+    print(update_sql)
     db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
     user="root", 
@@ -236,7 +241,9 @@ if __name__ == "__main__":
     ('test5', 5), 
     ('test6', 6);"""  
     t = time.strftime('%Y-%m-%d %H:%M:%S')
-    INSERT('t_contactor',['ContactorID','Name','UserID','CreateTime'],[2424,'Kitten',32432,t])
+    print(t)
+    # INSERT('t_contactor',['ContactorID','Name','UserID'],[2426,'Kitten',32532])
+    MODIFIED('t_contactor', 2426, ['gender','birthdate'], [2,'1994-08-25'])
 
     # # 插入
     # INSERT('user', ['name','age'], ['test7',7])
