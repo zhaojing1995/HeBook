@@ -13,27 +13,18 @@ from support import *
 import database as db
 
 class User():
-    def __init__(self,name,password,config):
+    def __init__(self,name,password,bundlephone,config):
         self.UserID = db.get_current_id('t_user')
         self.Name = name
         self.Password = password
-        if not db.INSERT('t_user',['UserID','Name','Password'],[self.UserID,self.Name,self.Password]):
+        self.BundlePhone = bundlephone
+        if not db.INSERT('t_user',['UserID','Name','Password','BundlePhone'],[self.UserID,self.Name,self.Password,self.BundlePhone]):
             print "Insert error！"
         else:
             for key in config:
                 db.MODIFIED('t_user',self.UserID,[key],[config[key]])
 
 
-        # if config.gender:
-        #     db.INSERT('t_user',['Gender'],[config.gender])
-        # if config.birthdate:
-        #     db.INSERT('t_user',['BirthDate'],[config.birthdate])
-        # if config.phonenumber1:
-        #     db.INSERT('t_user', ['BirthDate'], [config.birthdate])
-        # if config.birthdate:
-        #     db.INSERT('t_user', ['BirthDate'], [config.birthdate])
-        # if config.birthdate:
-        #     db.INSERT('t_user', ['BirthDate'], [config.birthdate])
 
 
 
