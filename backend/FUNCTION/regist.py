@@ -14,5 +14,13 @@ from User import  User
 
 
 #考虑一个注册的流程
-def fun_regist(config): #创建User
-    user = User(config)
+def fun_regist(username,password,bundlephone,config): #创建User
+    '''
+    :param username:  用户昵称
+    :param password:  密码
+    :param bundlephone:  绑定的手机号
+    :param config:  其他非必填数据项
+    :return: 注册成功返回1，否则返回0
+    '''
+    user = User(username,password,bundlephone,config)
+

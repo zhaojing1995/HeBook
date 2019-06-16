@@ -9,7 +9,6 @@
 @DES:
 '''
 
-
 from database import  *
 from Contactor import *
 from User import *
