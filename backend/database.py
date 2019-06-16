@@ -240,10 +240,11 @@ if __name__ == "__main__":
     ('test4', 4), 
     ('test5', 5), 
     ('test6', 6);"""  
-    t = time.strftime('%Y-%m-%d %H:%M:%S')
-    print(t)
+    # t = time.strftime('%Y-%m-%d %H:%M:%S')
+    # print(t)
+
     # INSERT('t_contactor',['ContactorID','Name','UserID'],[2426,'Kitten',32532])
-    MODIFIED('t_contactor', 2426, ['gender','birthdate'], [2,'1994-08-25'])
+    # MODIFIED('t_contactor', 2426, ['gender','birthdate'], [2,'1994-08-25'])
 
     # # 插入
     # INSERT('user', ['name','age'], ['test7',7])
