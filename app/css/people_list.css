@@ -1,0 +1,239 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 16px;
+    color: gray;
+}
+body{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+
+}
+::-webkit-scrollbar{
+display:none;
+}
+.lables_bar, .sort_bar{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: #FAFAFA;
+}
+/*ul{*/
+    /*list-style: none;*/
+/*}*/
+.lables_bar ul, .sort_bar ul{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    white-space:nowrap;/*内容横向排列不换行*/
+    overflow-x: scroll;
+    /*overflow-y: hidden;*/
+}
+/*所有的ul都没有样式*/
+.lable, .sort{
+    position: relative;
+    top: 0px;
+    display: inline-block;
+    list-style: none;
+    min-width: 40px;
+    width: auto;
+    height: 30px;
+    background-color: white;
+    margin: 5px;
+    /*font-size: 12px;*/
+    text-align: center;
+    line-height: 30px;
+    color: #FF7268;
+}
+.sort{
+    background:none;
+    line-height: 30px;
+}
+.sort_bar ul{
+    padding-left: 50px;
+    width: 325px;
+}
+.flag_sort{
+    position: fixed;
+    top: 40px;
+    width: 50px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-right:solid 0.1px #efedea;
+    background-color: #FAFAFA;
+    z-index: 100;
+    color: #FF7268;
+}
+
+.people_list{
+    position: absolute;
+    top: 83px;
+    width: 100%;
+    height: 627px;
+    /*overflow: scroll;*/
+    /*background-color: grey;*/
+}
+.people_list ul{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow:scroll;
+}
+.people_one{
+    list-style: none;
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    border-bottom:solid 0.1px #efedea;
+}
+.end_line{
+    height: 40px;
+    border: none;
+    text-align: center;
+    line-height: 40px;
+}
+.p_img{
+    position: relative;
+    /*display: inline-block;*/
+    float: left;
+    width: 90px;
+    height: 90px;
+    margin: 5px;
+    background-color: grey;
+}
+.p_img img{
+    width: 100%;
+    height: 100%;
+}
+.p_info{
+    position: relative;
+    /*display: inline-block;*/
+    float: left;
+    height: 90px;
+    width: 260px;
+    margin: 5px;
+    /*background-color: hotpink;*/
+}
+.p_info .row1, .p_info .row2, .p_info .row3, .p_info .row4{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    /*background-color: #efedea;*/
+}
+.p_info .row2{
+    /*background-color: #FF7268;*/
+    height: 20px;
+
+}
+.p_info .row3{
+    /*background-color: chartreuse;*/
+    height: 20px;
+
+}
+.p_info .row4{
+    /*background-color: darkgrey;*/
+    height: 20px;
+
+}
+.inblock{
+    position: relative;
+    display: inline-block;
+    float: left;
+    height: 100%;
+}
+.p_name{
+    width: 130px;
+    font-size: 18px;
+    color: #FF7268;
+    line-height: 30px;
+}
+.p_age{
+    width: 50px;
+    font-size: 14px;
+    text-align: left;
+    color: grey;
+    line-height: 30px;
+}
+.p_gender{
+    width: 20px;
+    text-align:left;
+    font-size: 14px;
+    color: grey;
+    line-height: 30px;
+}
+.p_score{
+    width: 50px;
+    text-align: center;
+    font-size: 20px;
+    color: #FF7268;
+    line-height: 30px;
+}
+.p_interaction, .p_untouchdays{
+    width: 50%;
+    text-align:left;
+    font-size: 12px;
+    color: gray;
+    line-height: 20px;
+}
+.p_interaction p, .p_untouchdays p{
+    display: inline;
+    font-size: 14px;
+    color: dimgrey;
+
+}
+.p_create_time p, .p_update_time p{
+    color: darkgrey;
+    font-size: 11px;
+}
+.p_create_time, .p_update_time{
+    color: darkgrey;
+    font-size: 10px;
+}
+
+.fun_list{
+    position: relative;
+    width:100%;
+    height: auto;
+
+}
+.fun_list li{
+    position: relative;
+    list-style: none;
+    width: 100%;
+    height:60px;
+    margin-left: 18px;
+    border-bottom: solid 0.1px #efedea;
+
+    /*text-align: center;*/
+}
+.fun_name{
+    position: relative;
+    font-size: 24px;
+    line-height: 60px;
+    float: left;
+    width: 70%;
+    color: black;
+}
+.fun_arrow{
+    position: relative;
+    line-height: 60px;
+    font-size: 24px;
+    float: right;
+    width: 20%;
+    color: dimgrey;
+
+}
+.fun_arrow p{
+    display: inline-block;
+    font-size: 18px;
+    color: #FF7268;
+}
+
+
+
