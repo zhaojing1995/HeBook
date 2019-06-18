@@ -24,4 +24,5 @@ if __name__ =="__main__":
         "PhoneNumber1":17943233523,
         "JobState":2
     }
-    user = User("zhaoyuyu","794253",config)
+    user = User("zhaoyuyu","794253",13509480587,config)
+    user.set_Name("zhaojing")
