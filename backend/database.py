@@ -157,7 +157,7 @@ def FIND(table_name, field, conditions):
         # 参数名   | 参数类型                       |       解释
         db_connect: pymysql.connect()方法的返回值       数据库链接
         table_name: 字符串                              表的名称
-        field     : 列表                                需要查询的字段,全选填‘*’
+        field     : 列表                                需要查询的字段,全选填 [‘*’]
         conditions: 列表                                条件      
     返回值
         查找成功: 返回 True
@@ -172,9 +172,9 @@ def FIND(table_name, field, conditions):
     condition_string = ""
     for ii in range(0,len(conditions)-1):
         condition_string += "%s AND "%conditions[ii]
-    condition_string += "%s"%field[len(conditions)-1]
+    condition_string += "%s"%conditions[len(conditions)-1]
 
-    select_sql = "select from %s WHERE %s=%s"%(table_name, table_ID[table_name], id)
+    select_sql = "select %s from %s WHERE %s"%(field_string, table_name, condition_string)
     
     db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
@@ -185,10 +185,43 @@ def FIND(table_name, field, conditions):
     cursor = db_connect.cursor()
     try:
         cursor.execute(select_sql)
-        db_connect.commit()
-        return True
+        results = cursor.fetchall()
+        return results
     except:
-        db_connect.rollback()
+        return False
+
+def FIND_ALL(table_name, field):
+    """
+    函数功能： 在特定数据库寻找满足条件的数据
+    参数：
+        # 参数名   | 参数类型                       |       解释
+        db_connect: pymysql.connect()方法的返回值       数据库链接
+        table_name: 字符串                              表的名称
+        field     : 列表                                需要查询的字段,全选填‘*’     
+    返回值
+        查找成功: 返回 True
+        查找失败: 返回 False
+    """
+
+    field_string = ''
+    for ii in range(0,len(field)-1):
+        field_string += "%s,"%field[ii]
+    field_string += "%s"%field[len(field)-1]
+
+    select_sql = "select %s from %s"%(field_string, table_name)
+    
+    db_connect = pymysql.connect(host=config["server_ip"], 
+    port=3306,
+    user="root", 
+    password="123456", 
+    database=config["database"])
+
+    cursor = db_connect.cursor()
+    try:
+        cursor.execute(select_sql)
+        results = cursor.fetchall()
+        return results
+    except:
         return False
 
 def get_current_id(table_name):
@@ -246,7 +279,7 @@ if __name__ == "__main__":
     # INSERT('t_contactor',['ContactorID','Name','UserID'],[2426,'Kitten',32532])
     # MODIFIED('t_contactor', 2426, ['gender','birthdate'], [2,'1994-08-25'])\
     print(INSERT('t_user',['userID','Name','password','bundlephone'],[1,'Kitten','32532',18570744251]))
-    print(INSERT('t_uscocialaccount',['SPcountID','bundlephone'],[1,'32532']))
+    print(INSERT('t_uscocialaccount',['SPcountID','UserID','APP','Account','Authority'],[1,1,3,'haha','nudt']))
 
     # # 插入
     # INSERT('user', ['name','age'], ['test7',7])
@@ -271,6 +304,10 @@ if __name__ == "__main__":
     # #查询
     # cursor.execute("select * from user")
     print(get_current_id("t_contactor"))
+    results = FIND_ALL('t_contactor',['ContactorID'])
+    print(len(results))
+    for item in results:
+        print item[0]
     # results = cursor.fetchall()
     # # 关于存储一年内联系天数的方法，存储binary信息，在python后台中使用int.from_bytes将其转换
     # # 成int类型数据进行处理
