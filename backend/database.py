@@ -174,7 +174,7 @@ def FIND(table_name, field, conditions):
         condition_string += "%s AND "%conditions[ii]
     condition_string += "%s"%field[len(conditions)-1]
 
-    select_sql = "select from %s where id='%s'"%(table_name, id)
+    select_sql = "select from %s WHERE %s=%s"%(table_name, table_ID[table_name], id)
     
     db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
@@ -246,6 +246,7 @@ if __name__ == "__main__":
     # INSERT('t_contactor',['ContactorID','Name','UserID'],[2426,'Kitten',32532])
     # MODIFIED('t_contactor', 2426, ['gender','birthdate'], [2,'1994-08-25'])\
     print(INSERT('t_user',['userID','Name','password','bundlephone'],[1,'Kitten','32532',18570744251]))
+    print(INSERT('t_uscocialaccount',['SPcountID','bundlephone'],[1,'32532']))
 
     # # 插入
     # INSERT('user', ['name','age'], ['test7',7])
