@@ -174,7 +174,7 @@ def FIND(table_name, field, conditions):
         condition_string += "%s AND "%conditions[ii]
     condition_string += "%s"%field[len(conditions)-1]
 
-    select_sql = "select %s from %s WHERE %s=%s"%(field_string, table_name, table_ID[table_name], id)
+    select_sql = "select %s from %s WHERE %s"%(field_string, table_name, condition_string)
     
     db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
