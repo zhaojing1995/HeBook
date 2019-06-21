@@ -172,7 +172,7 @@ def FIND(table_name, field, conditions):
     condition_string = ""
     for ii in range(0,len(conditions)-1):
         condition_string += "%s AND "%conditions[ii]
-    condition_string += "%s"%field[len(conditions)-1]
+    condition_string += "%s"%conditions[len(conditions)-1]
 
     select_sql = "select %s from %s WHERE %s"%(field_string, table_name, condition_string)
     
