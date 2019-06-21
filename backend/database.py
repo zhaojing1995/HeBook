@@ -49,7 +49,7 @@ def INSERT(table_name, argv_list, value_list):
     
     # 定义SQL语句
     insert_sql = "INSERT INTO "+table_string + argc_string + " VALUES " + value_string
-    print(insert_sql)
+    
     db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
     user="root", 
@@ -66,6 +66,7 @@ def INSERT(table_name, argv_list, value_list):
     except:
         #如果发生错误则回滚
         db_connect.rollback()
+        print(insert_sql)
         return False
 
 def MODIFIED(table_name, id, argv_list, value_list):
@@ -102,7 +103,7 @@ def MODIFIED(table_name, id, argv_list, value_list):
 
     # 定义更新语句
     update_sql = "UPDATE %s SET %s WHERE %s=%s"%(table_name, key_value_string, table_ID[table_name], id)
-    print(update_sql)
+    
     db_connect = pymysql.connect(host=config["server_ip"], 
     port=3306,
     user="root", 
@@ -119,6 +120,7 @@ def MODIFIED(table_name, id, argv_list, value_list):
     except:
         #如果发生错误则回滚
         db_connect.rollback()
+        print(update_sql)
         return False
 
 def DELETE(table_name, id):
@@ -251,36 +253,56 @@ if __name__ == "__main__":
         password="123456", 
         database=config["database"])
 
-    cursor = db.cursor()
-
-    # cursor.execute("drop table if exists user")
-    # sql="""CREATE TABLE IF NOT EXISTS `user` ( 
-    #     `id` int(11) NOT NULL AUTO_INCREMENT, 
-    #     `name` varchar(255) NOT NULL, 
-    #     `age` int(11) NOT NULL,
-    #     `bin_da` binary(255),
-    #     PRIMARY KEY (`id`) 
-    #     ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=0"""
-
-
-    # cursor.execute(sql)
-
-    #user插入数据
-    sql="""INSERT INTO user (`name`, `age`) VALUES 
-    ('test1', 1), 
-    ('test2', 2), 
-    ('test3', 3), 
-    ('test4', 4), 
-    ('test5', 5), 
-    ('test6', 6);"""  
-    # t = time.strftime('%Y-%m-%d %H:%M:%S')
-    # print(t)
-
-    # INSERT('t_contactor',['ContactorID','Name','UserID'],[2426,'Kitten',32532])
-    # MODIFIED('t_contactor', 2426, ['gender','birthdate'], [2,'1994-08-25'])\
+    # 插入
     print(INSERT('t_user',['userID','Name','password','bundlephone'],[1,'Kitten','32532',18570744251]))
     print(INSERT('t_uscocialaccount',['SPcountID','UserID','APP','Account','Authority'],[1,1,3,'haha','nudt']))
+    print(INSERT('t_remark',['RemarkID','ContactorID','Content'],[1,2,'Kitten haha']))
+    print(INSERT('t_like',['LikeID','CreatorID','LikeName','IsDelete','isCreatorHave'],[1,2,'Kitten',2,1]))
+    print(INSERT('t_jobdsc',['JobDscID','DscContent','JobID'],[1,'she is a journalist',2]))
+    print(INSERT('t_job',['JobID','ContactorID','UserID'],[1,2,3]))
+    print(INSERT('t_interaction',['InteractionID','Level','Touchday'],[1,5,'100010']))
+    print(INSERT('t_hate',['HateID','HateName','CreatorID','isCreatorHave'],[1,'potato',3,4]))
+    print(INSERT('t_flag',['flagID','FlagName','CreatorID','isCreatorHave'],[1,'potato',3,4]))
+    print(INSERT('t_educationbackground',['EduBackID','Degree','School','ContactorID','UserID'],\
+        [1,4,'hehehe',4,5]))
+    print(INSERT('t_edubackdsc',['EduBackDscID','DscContent','EduBackID'],[1,'we have a world',5]))
+    print(INSERT('t_csocialaccount',['SPcountID','APP','Account','ContactorID'],[1,1,'haha',4]))
+    print(INSERT('t_contactor',['ContactorID','Name','UserID'],[2426,'Kitten',32532]))
+    print(INSERT('a_contactor_like',['ContactorID','LikeID'],[2,4]))
+    print(INSERT('a_contactor_hate',['ContactorID','hateID'],[1,2]))
+    print(INSERT('a_contactor_flag',['ContactorID','flagID'],[2,8]))
 
+    # 修改
+    print(MODIFIED('t_user',1,['gender','birthdate','phonenumber1'], [0,'1994-08-25','18570744251']))
+    print(MODIFIED('t_uscocialaccount',1,['UserID','APP','Account','Authority'],[1,3,'zhangbiwei','nudt']))
+    print(MODIFIED('t_remark',1,['ContactorID','Content'],[2,'Kitten i like you']))
+    print(MODIFIED('t_like',1,['CreatorID','LikeName','IsDelete','isCreatorHave'],[2,'Kitten OK',2,1]))
+    print(MODIFIED('t_jobdsc',1,['DscContent','JobID'],['she is a journalist, too',2]))
+    print(MODIFIED('t_job',1,['ContactorID','UserID'],[2,3]))
+    print(MODIFIED('t_interaction',1,['Level','Touchday'],[5,'10010100100010']))
+    print(MODIFIED('t_hate',1,['HateName','CreatorID','isCreatorHave'],['potato',3,4]))
+    print(MODIFIED('t_flag',1,['flagID','FlagName','CreatorID','isCreatorHave'],[1,'tomato',3,4]))
+    print(MODIFIED('t_educationbackground',1,['Degree','School','ContactorID','UserID'],\
+        [4,'hehehe',4,5]))
+    print(MODIFIED('t_edubackdsc',1,['DscContent','EduBackID'],['we have a world',5]))
+    print(MODIFIED('t_csocialaccount',1,['APP','Account','ContactorID'],[1,'haha',4]))
+    print(MODIFIED('t_contactor', 2426, ['gender','birthdate'], [2,'1994-08-25']))
+
+    # 查询
+    print(FIND('t_user',['*'],['%s=%d'%(table_ID['t_user'],1)]))
+    print(FIND('t_uscocialaccount',['*'],['%s=%d'%(table_ID['t_uscocialaccount'],1)]))
+    print(FIND('t_remark',['*'],['%s=%d'%(table_ID['t_remark'],1)]))
+    print(FIND('t_like',['*'],['%s=%d'%(table_ID['t_like'],1)]))
+    print(FIND('t_jobdsc',['*'],['%s=%d'%(table_ID['t_jobdsc'],1)]))
+    print(FIND('t_job',['*'],['%s=%d'%(table_ID['t_job'],1)]))
+    print(FIND('t_interaction',['*'],['%s=%d'%(table_ID['t_interaction'],1)]))
+    print(FIND('t_hate',['*'],['%s=%d'%(table_ID['t_hate'],1)]))
+    print(FIND('t_flag',['*'],['%s=%d'%(table_ID['t_flag'],1)]))
+    print(FIND('t_educationbackground',['*'],['%s=%d'%(table_ID['t_educationbackground'],1)]))
+    print(FIND('t_edubackdsc',['*'],['%s=%d'%(table_ID['t_edubackdsc'],1)]))
+    print(FIND('t_csocialaccount',['*'],['%s=%d'%(table_ID['t_csocialaccount'],1)]))
+    print(FIND('t_contactor',['*'],['%s=%d'%(table_ID['t_contactor'],2426)]))
+    
     # # 插入
     # INSERT('user', ['name','age'], ['test7',7])
     # # INSERT(db, 'user', ['name','age', 'bin_da'], ['test8', 8, '82364873628765837658736587'])
@@ -301,23 +323,12 @@ if __name__ == "__main__":
     # except:
     #     db.rollback()
 
-    # #查询
-    # cursor.execute("select * from user")
-    print(get_current_id("t_contactor"))
-    results = FIND_ALL('t_contactor',['ContactorID'])
-    print(len(results))
-    for item in results:
-        print item[0]
-    # results = cursor.fetchall()
+    # print(get_current_id("t_contactor"))
+    # results = FIND_ALL('t_contactor',['ContactorID'])
+    # print(len(results))
+    # for item in results:
+    #     print item[0]
+
+    
     # # 关于存储一年内联系天数的方法，存储binary信息，在python后台中使用int.from_bytes将其转换
     # # 成int类型数据进行处理
-    # for row in results:
-    #     name = row[1]
-    #     age = row[2]
-    #     # print(type(name), type(age), type(row[3]))
-    #     bi = row[3]
-    #     # if bi is not None:
-    #     #     print(type(row[3]))
-    #     #     print(bi)
-    #     #     bi = int(bi, 16)
-    #     print("name=%s, age=%s, data=%s"%(name, age, bi))
