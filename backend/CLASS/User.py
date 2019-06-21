@@ -25,16 +25,15 @@ class User():
                 db.MODIFIED('t_user',self.UserID,[key],[config[key]])
 
 
-
-
-
     '''set methods'''
     def set_Name(self,name):
         self.Name = name #前端来判断前后命名是否相同 和是否合法
         # 写入数据库
+        db.MODIFIED('t_user',self.UserID,['Name'],[name])
 
     def set_Password(self,password):
         self.Password = password
+        db.MODIFIED('t_user',self.UserID,['Password'],password)
 
     def set_Gender(self,gender):
         self.Gender = gender
@@ -67,4 +66,8 @@ class User():
     #     self.UpdateTime = get_current_time()
     #     # 执行数据库操作
 
-    '''其他功能'''
+    '''delete'''
+    def delete_self(self):
+        db.DELETE('t_user', self.UserID)
+
+    '''get methods'''
