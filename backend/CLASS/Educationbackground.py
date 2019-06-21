@@ -16,7 +16,7 @@ import database as db
 
 class Educationbackground():
     def __init__(self,id, degree,school,contactorid,userid):
-        self.EduBackId = id  # no change
+        self.EduBackID = id  # no change
         self.Degree = degree
         self.School  = school
         self.ContactorID =contactorid    #no change
@@ -28,9 +28,16 @@ class Educationbackground():
     '''------------set methods-------------'''
     def set_Degree(self,degree):
         self.Degree = degree
+        db.MODIFIED('t_educationbackground',self.EduBackID,['Degree'],degree)
 
     def set_School(self,school):
         self.School = school
+        db.MODIFIED('t_educationbackground', self.EduBackID, ['School'],school)
+
+    '''delete'''
+    def delete_self(self):
+        db.DELETE('t_educationbackground', self.EduBackID)
+
 
 
 

@@ -10,7 +10,7 @@
 @DES:
 '''
 from support import *
-
+import database as db
 class Remark():
     def __init__(self,remarkid,content,contactorid):
         self.RemarkID = remarkid
@@ -20,6 +20,10 @@ class Remark():
 
     def set_Content(self,content):
         self.Content =  content
+        db.MODIFIED('t_remark', self.Content, ['Content'],content)
 
 
     #def set_updata(self): # 更新所有的数据
+
+    def delete_self(self):
+        db.DELETE('t_remark',self.RemarkID)

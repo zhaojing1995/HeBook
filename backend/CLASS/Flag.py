@@ -29,8 +29,13 @@ class Flag():
 
     def IsDelete(self,isdelete):
         self.IsDelete = isdelete
+        db.MODIFIED('t_flag',self.FlagID,['IsDelete'],isdelete)
 
     def isCreatorHave(self,iscreatorhave):
-        self.iscreatorhave = iscreatorhave
+        self.isCreatorHave = iscreatorhave
+        db.MODIFIED('t_flag', self.FlagID, ['isCreatorHave'],iscreatorhave)
 
 
+    '''delete'''
+    def delete_self(self):
+        db.DELETE('t_flag', self.FlagID)

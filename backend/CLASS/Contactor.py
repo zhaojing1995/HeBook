@@ -35,37 +35,49 @@ class Contactor():
 
     def set_Gender(self, gender):
         self.Gender = gender
+        db.MODIFIED('t_contactor', self.ContactorID, ['Gender'], [self.Gender])
 
     def set_BirthDate(self, birthdate):
         self.BrithDate = birthdate
+        db.MODIFIED('t_contactor', self.ContactorID, ['BrithDate'], [self.BrithDate])
 
     def set_PhoneNumber1(self, phone1):
         self.PhoneNumer1 = phone1
+        db.MODIFIED('t_contactor', self.ContactorID, ['PhoneNumer1'], [self.PhoneNumer1])
 
     def set_PhoneNumber2(self, phone2):
         self.PhoneNumer2 = phone2
+        db.MODIFIED('t_contactor', self.ContactorID, ['PhoneNumer2'], [self.PhoneNumer2])
 
     def set_PhoneNumber3(self, phone3):
         self.PhoneNumer3 = phone3
+        db.MODIFIED('t_contactor', self.ContactorID, ['PhoneNumer3'], [self.PhoneNumer3])
 
     def set_JobState(self, jobstate):
         self.JobState = jobstate
+        db.MODIFIED('t_contactor', self.ContactorID, ['JobState'], [self.JobState])
 
     def set_NativePlace(self, nativeplace):
         self.NativePlace = nativeplace
+        db.MODIFIED('t_contactor', self.ContactorID, ['NativePlace'], [self.NativePlace])
 
     def set_Residence(self, residence):
         self.Residence = residence
+        db.MODIFIED('t_contactor', self.ContactorID, ['Residence'], [self.Residence])
 
     def set_Marriage(self, marriage):
         self.Marriage = marriage
+        db.MODIFIED('t_contactor', self.ContactorID, ['Marriage'], [self.Marriage])
+
 
     # def set_updata(self):  # 更新所有的项目
     #     self.UpdateTime =
     #     # 执行数据库操作
 
 
-
+    '''delete'''
+    def delete_self(self):
+        db.DELETE('t_contactor', self.ContactorID)
 
 
 

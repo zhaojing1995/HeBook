@@ -12,7 +12,7 @@
 
 from support import *
 import database as db
-
+import database as db
 class JobDsc():
     def __init__(self,jobdscid,dsccontent,jobid):
         self.JobDscID = jobdscid
@@ -22,4 +22,10 @@ class JobDsc():
 
     def set_DscContent(self,dsccontent):
         self.DscContent = dsccontent
+        db.MODIFIED('t_like',self.JobDscID,['DscContent'],dsccontent)
+
+
+    '''delete'''
+    def delete_self(self):
+        db.DELETE('t_jobdsc', self.JobDscID)
 

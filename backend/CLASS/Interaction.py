@@ -33,23 +33,28 @@ class Interaction():
 
     def set_Level(self, level):  # 修改level
         self.Level = level
+        db.MODIFIED('t_interaction',self.InteractionID,['Level'],level)
 
     def _update_ProactiveCount(self):  # 主动联系次数
         self.ProactiveCount += 1
+        db.MODIFIED('t_interaction', self.InteractionID, ['ProactiveCount'],self.ProactiveCount)
 
     def _update_PassiveCount(self):  # 被动联系次数
         self.PassiveCount += 1
+        db.MODIFIED('t_interaction', self.InteractionID, ['PassiveCount'],self.PassiveCount)
 
     def _update_ActiveDay(self):  # 有效天数
         if (self.ActiveDay >= config["validata_days"]):
             pass
         else:
             self.ActiveDay += 1
+            db.MODIFIED('t_interaction', self.InteractionID, ['ActiveDay'],self.ActiveDay)
 
     def _update_TotalScore(self):  # 更新得分
         level_contro = (6 - self.Level) * 10
         frequ_contro = (self.ProactiveCount + self.PassiveCount) * 50 / self.ActiveDay
         self.TotalScore = level_contro + frequ_contro
+        db.MODIFIED('t_interaction', self.InteractionID, ['TotalScore'],self.TotalScore)
         if (self.TotalScore > 100):
             return {'error': 'error！总分大于100分！'}
 
@@ -65,6 +70,10 @@ class Interaction():
         self._update_ProactiveCount()
         self._update_TotalScore()
         self._update_UntouchDay()
+
+    '''delete'''
+    def delete_self(self):
+        db.DELETE('t_interaction', self.InteractionID)
 
 
 

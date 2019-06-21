@@ -26,3 +26,19 @@ class CSocialAccount():
         # self.CreateTime = get_current_time()
 
    # def Updatetime(self):
+
+    def set_APP(self,app):
+        self.APP = app
+        db.MODIFIED('t_csocialaccount',self.SPcountID,['APP'],app)
+
+    def set_Account(self,account):
+        self.Account = account
+        db.MODIFIED('t_csocialaccount',self.SPcountID,['Account'],account)
+
+    def set_ContactorID(self,contactorid):
+        self.ContactorID = contactorid
+        db.MODIFIED('t_csocialaccount',self.SPcountID,['ContactorID'],contactorid)
+
+    '''delete'''
+    def delete_self(self):
+        db.DELETE('t_csocialaccount', self.SPcountID)

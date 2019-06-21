@@ -31,13 +31,19 @@ class Hete():
     '''----------------set methods---------------------'''
     def set_HateName(self,hatename):
         self.HateName = hatename
+        db.MODIFIED('t_hate',self.HateID,['HateName'],hatename)
 
     def set_isDelete(self,isdelete):
         self.isDelete=isdelete
+        db.MODIFIED('t_hate', self.HateID, ['isDelete'],isdelete)
 
     def set_isCreatorHave(self,ishave):
         self.isCreatorHave = ishave
+        db.MODIFIED('t_hate', self.HateID, ['isCreatorHave'],ishave)
 
 
+    '''delete'''
+    def delete_self(self):
+        db.DELETE('t_hate', self.HateID)
 
 

@@ -10,7 +10,7 @@
 @DES:
 '''
 from support import *
-
+import database as db
 class Like():
     def __init__(self,likeid,likename,iscreatorhave,creatorid,):
         self.LikeID = likeid
@@ -22,18 +22,26 @@ class Like():
 
     def set_isDelete(self,isdelete):
         self.IsDelete = isdelete
+        db.MODIFIED('t_like',self.LikeID,['isDelete'],isdelete)
 
     def set_isCreatorHave(self,iscreatorhave):
         self.isCreatorHave = iscreatorhave
+        db.MODIFIED('t_like',self.LikeID,['isCreatorHave'],iscreatorhave)
 
     def set_LikeName(self,likename):
         self.LikeName = likename
+        db.MODIFIED('t_like',self.LikeID,['LikeName'],likename)
 
     def set_CreatorID(self,creatorid):
         self.CreatorID = creatorid
+        db.MODIFIED('t_like',self.LikeID,['CreatorID'],creatorid)
 
 
     # def set_updata(self): # 更新所有的数据
     #     return 0
 
     '''其他功能'''
+    '''delete'''
+    def delete_self(self):
+        db.DELETE('t_like',self.LikeID)
+

@@ -37,30 +37,39 @@ class User():
 
     def set_Gender(self,gender):
         self.Gender = gender
+        db.MODIFIED('t_user', self.UserID,['Gender'],gender)
 
     def set_BirthDate(self,birthdate):
-        self.BrithDate = birthdate
+        self.BirthDate = birthdate
+        db.MODIFIED('t_user', self.UserID,['BirthDate'],birthdate)
 
     def set_PhoneNumber1(self,phone1):
         self.PhoneNumer1 = phone1
+        db.MODIFIED('t_user', self.UserID,['PhoneNumber1'],phone1)
 
     def set_PhoneNumber2(self,phone2):
         self.PhoneNumer2 = phone2
+        db.MODIFIED('t_user', self.UserID,['PhoneNumber2'],phone2)
 
     def set_PhoneNumber3(self,phone3):
         self.PhoneNumer3 = phone3
+        db.MODIFIED('t_user', self.UserID,['PhoneNumber3'],phone3)
 
     def set_JobState(self,jobstate):
         self.JobState = jobstate
+        db.MODIFIED('t_user', self.UserID,['JobState'],jobstate)
 
     def set_NativePlace(self,nativeplace):
         self.NativePlace = nativeplace
+        db.MODIFIED('t_user', self.UserID,['NativePlace'],nativeplace)
 
     def set_Residence(self,residence):
         self.Residence = residence
+        db.MODIFIED('t_user', self.UserID,['Residence'],residence)
 
     def set_Marriage(self,marriage):
         self.Marriage = marriage
+        db.MODIFIED('t_user', self.UserID,['Marriage'],marriage)
 
     # def set_updata(self): # 更新所有的数据
     #     self.UpdateTime = get_current_time()
@@ -69,5 +78,6 @@ class User():
     '''delete'''
     def delete_self(self):
         db.DELETE('t_user', self.UserID)
+
 
     '''get methods'''
