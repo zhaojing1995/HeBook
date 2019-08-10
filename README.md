@@ -1,3 +1,4 @@
+@[toc](Hebook 软件架构设计)
 # 1 Hebook内容描述
 Hebook定位于人脉信息管理平台，帮助用户存储、查询复杂的人脉信息，并基于对人脉信息的分析和推断，给用户提供人脉管理方案推荐。
 
@@ -71,10 +72,13 @@ Hebook定位于人脉信息管理平台，帮助用户存储、查询复杂的�
 
 
 ## 2.4 实体属性分析
-在这里插入图片描述
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190810165319759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05HVWV2ZXIxNQ==,size_16,color_FFFFFF,t_70)
 
 ## 2.4 类图设计建模
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20190801215511744.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05HVWV2ZXIxNQ==,size_16,color_FFFFFF,t_70)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190810172819587.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05HVWV2ZXIxNQ==,size_16,color_FFFFFF,t_70)
+
+## 2.4 组件图设计建模
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20190810173023756.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05HVWV2ZXIxNQ==,size_16,color_FFFFFF,t_70)
 
 # 3 数据库设计
 
@@ -158,29 +162,36 @@ Hebook定位于人脉信息管理平台，帮助用户存储、查询复杂的�
 | 名称 | CODE | 类型 |  描述|  可否为空 | 初始化| 
 |--|--|--|--|--|--| 
 | **标签ID** | mark_id | int| | 否| 表长度 | 
+| 用户ID | user_id | char | user_id （user拥有一个mark 列表）外码 | 否 | 来源|
 | 标签名称 | mark_name | char | | 否|
-| 创建者 | creator | char | user_id （user拥有一个mark 列表） | 否 | 来源|
 
 
 ## 3.7 Prefer（* - * ）
 | 名称 | CODE | 类型 |  描述|  可否为空 | 初始化| 
 |--|--|--|--|--|--| 
 | **偏好ID** | prefer_id | int| | 否| 表长度 | 
+| 用户ID | user_id | char | user_id （user拥有一个prefer 列表） | 否 | 来源|
 | 偏好名称 | prefer_name | char | | 否|
 | 偏好类型 | prefer_type | int | 0 喜好 1 讨厌 | 否 | 0 | 
-| 创建者 | creator | char | user_id （user拥有一个prefer 列表） | 否 | 来源|
+
 
 ## 3.8 Authorization 
 | 名称 | CODE | 类型 |  描述|  可否为空 | 初始化| 
 |--|--|--|--|--|--| 
 |**授权ID** | authorization_id | int| | 否 | 表长度 
 | **用户ID** | user_id | char|  | 否 |来源|
-| 应用名称 | app_name | char |  | 否 |
+| 应用名称 | app_name | int | 0 微信 1 QQ 2 微博 （目前只考虑这三个平台） | 否 |
 |账号 | app_account | char | 第三方平台的账号 | 否 | 
 | 授权码 | authorzation_code| char | **能有效登录第三方平台**|   
 
 
-## 3.9 用户的第三方平台账号 （根据 命名自行匹配）
+## 3.9 Social_app（根据 命名自行匹配）
+| 名称 | CODE | 类型 |  描述|  可否为空 | 初始化| 
+|--|--|--|--|--|--| 
+| 社交ID | socia_id | int| | 否| 表长度 | 
+| 联系人ID | contact_id | char | 外码 | 否 | 
+| 社交平台 | social_platform | int | 0 微信 1 QQ 2 微博 （目前只考虑这三个平台）| 否 | 
+| 社交账号 | social_account | char | 每个平台的用户ID不一样 | 否 |
 
 ## 3.10 Contact_description
 | 名称 | CODE | 类型 |  描述|  可否为空 | 初始化| 
@@ -188,3 +199,17 @@ Hebook定位于人脉信息管理平台，帮助用户存储、查询复杂的�
 |**描述ID** | descript_id | int | | 否| 表长度|
 | **联系人ID** | contact_id| char | 用于描述联系人  外码 | 否| 来源
 | 描述内容| descript_content | char | | 否 |
+
+
+## 3.11 Contact_mark （关系表）
+| 名称 | CODE | 类型 |  描述|  可否为空 | 初始化| 
+|--|--|--|--|--|--| 
+|**联系人ID** | contact_id| char | C000001（C开头）| 否| 表长度| 
+| **标签ID** | mark_id | int| | 否| 表长度 | 
+
+
+## 3. 12 Contact_prefer （关系表）
+| 名称 | CODE | 类型 |  描述|  可否为空 | 初始化| 
+|--|--|--|--|--|--| 
+|**联系人ID** | contact_id| char | C000001（C开头）| 否| 表长度| 
+| **偏好ID** | prefer_id | int| | 否| 表长度 | 
