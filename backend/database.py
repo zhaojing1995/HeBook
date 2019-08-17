@@ -302,32 +302,6 @@ if __name__ == "__main__":
     print(FIND('t_edubackdsc',['*'],['%s=%d'%(table_ID['t_edubackdsc'],1)]))
     print(FIND('t_csocialaccount',['*'],['%s=%d'%(table_ID['t_csocialaccount'],1)]))
     print(FIND('t_contactor',['*'],['%s=%d'%(table_ID['t_contactor'],2426)]))
-    
-    # # 插入
-    # INSERT('user', ['name','age'], ['test7',7])
-    # # INSERT(db, 'user', ['name','age', 'bin_da'], ['test8', 8, '82364873628765837658736587'])
-    # INSERT('user', ['name','age', 'bin_da'], ['test8', 8, 2342])
-
-    # MODIFIED('user', 5, ['name'], ['Lony'])
-
-    # # 删除
-    # DELETE('user', 2)
-
-    # # 修改
-    # id = 3
-    # sql = """update user set name='test37', age=31 WHERE id=%s;"""%(id)
-
-    # try:
-    #     cursor.execute(sql)
-    #     db.commit()
-    # except:
-    #     db.rollback()
-
-    # print(get_current_id("t_contactor"))
-    # results = FIND_ALL('t_contactor',['ContactorID'])
-    # print(len(results))
-    # for item in results:
-    #     print item[0]
 
     
     # # 关于存储一年内联系天数的方法，存储binary信息，在python后台中使用int.from_bytes将其转换

@@ -18,20 +18,15 @@ config = {
 
 # 表名称与表项ID间的映射，供修改数据时查找表使用
 table_ID = {
-    "a_contactor_flag":"ContactorID",
-    "a_contactor_like":"ContactorID",
-    "a_contactor_hate":"ContactorID",
-    "t_contactor":"ContactorID",
-    "t_csocialaccount":"SPcountID",
-    "t_edubackdsc":"EduBackDscID",
-    "t_educationbackground":"EduBackID",
-    "t_flag":"FlagID",
-    "t_hate":"HateID",
-    "t_interaction":"InteractionID",
-    "t_job":"JobID",
-    "t_jobdsc":"JobDscID",
-    "t_like":"LikeID",
-    "t_remark":"RemarkID",
-    "t_uscocialaccount":"SPcountID",
-    "t_user":"UserID"
+    "authorization":"authorization_id",
+    "contact":"Contact_ID",
+    "contact_description":"descript_id",
+    "contact_mark":"contact_id",
+    "contact_prefer":"contact_id",
+    "education":"education_id",
+    "job":"Job_ID",
+    "mark":"mark_ID",
+    "prefer":"prefer_id",
+    "social_app":"social_id",
+    "user":"User_ID"
 }
