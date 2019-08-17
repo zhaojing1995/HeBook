@@ -10,7 +10,6 @@
 @DES:
 '''
 # from CLASS import *
-from Interaction import *
 # from support import *
 from config import *
 import support as sp
@@ -22,7 +21,6 @@ class Contactor():
         self.Name = name
         self.UserID = userid
         # self.CreateTime = sp.get_current_time()
-        Interaction(level,self.ContactorID)   #初始化一个interaction
 
         db.INSERT('contact',['contact_id','Name','User_ID'],
                   [self.ContactorID,self.Name,self.UserID])
