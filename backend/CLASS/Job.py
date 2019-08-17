@@ -11,45 +11,46 @@
 '''
 from support import *
 import database as db
-import database as db
+
 class Job():
-    def __init__(self,jobid,contactorid,userid):
-        self.JobID = jobid
-        self.ContactorID = contactorid
-        self.UserID = userid
+    def __init__(self,job_id,person_id):
+        self.JobID = job_id
+        self.PersonID = person_id
 
-        db.INSERT('t_job',['JobID','ContactorID','UserID'],[self.JobID,self.ContactorID,self.UserID])
-
-
+        db.INSERT('job',['Job_ID','Person_ID'],[self.JobID,self.PersonID])
 
     def set_StartTime(self,starttime):
         self.StartTime = starttime
-        db.MODIFIED('t_job',self.JobID,['StartTime'],starttime)
+        db.MODIFIED('job',self.JobID,['Start_Time'],starttime)
 
     def set_EndTime(self,endtime):
         self.EndTime = endtime
-        db.MODIFIED('t_job', self.JobID, ['EndTime'],endtime)
-
-    def set_Salary(self,salary):
-        self.Salary = salary
-        db.MODIFIED('t_job', self.JobID, ['Salary'],salary)
-
-    def set_SalaryUnit(self,salaryunit):
-        self.SalaryUnit = salaryunit
-        db.MODIFIED('t_job', self.JobID, ['SalaryUnit'],salaryunit)
+        db.MODIFIED('job', self.JobID, ['End_Time'],endtime)
 
     def set_Company(self,company):
         self.Company = company
-        db.MODIFIED('t_job', self.JobID, ['Company'],company)
+        db.MODIFIED('job', self.JobID, ['Company'],company)
+
+    def set_Salary(self,salary):
+        self.Salary = salary
+        db.MODIFIED('job', self.JobID, ['Salary'],salary)
+
+    def set_SalaryUnit(self,salaryunit):
+        self.SalaryUnit = salaryunit
+        db.MODIFIED('job', self.JobID, ['Salary_Unit'],salaryunit)
+
+    def set_WorkPlace(self,workplace):
+        self.WorkPlace = workplace
+        db.MODIFIED('job', self.JobID, ['work_place'],workplace)
 
     def set_Position(self,position):
         self.Position = position
-        db.MODIFIED('t_job', self.JobID, ['Position'],position)
+        db.MODIFIED('job', self.JobID, ['Position'],position)
 
-    def setContactorID(self,contactorid):
-        self.ContactorID = contactorid
-        db.MODIFIED('t_job', self.JobID, ['ContactorID'],contactorid)
+    def setPersonID(self,PersonID):
+        self.PersonID = PersonID
+        db.MODIFIED('job', self.JobID, ['Person_ID'],PersonID)
 
     '''delete'''
     def delete_self(self):
-        db.DELETE('t_job', self.JobID)
+        db.DELETE('job', self.JobID)
