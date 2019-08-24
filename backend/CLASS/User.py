@@ -51,9 +51,9 @@ class User():
         self.PhoneNumer2 = phone2
         db.MODIFIED('user', self.UserID,['PhoneNumber2'],phone2)
 
-    def set_State(self,state):
-        self.State = state
-        db.MODIFIED('user', self.UserID,['State'],state)
+    def set_Status(self,status):
+        self.Status = status
+        db.MODIFIED('user', self.UserID,['Status'],self.Status)
     
     def set_Residence(self,residence):
         self.Residence = residence

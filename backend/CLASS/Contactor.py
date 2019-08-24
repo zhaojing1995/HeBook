@@ -47,9 +47,9 @@ class Contactor():
         self.PhoneNumer2 = phone2
         db.MODIFIED('contact', self.ContactorID, ['PhoneNumer2'], [self.PhoneNumer2])
 
-    def set_State(self, state):
-        self.State = state
-        db.MODIFIED('contact', self.ContactorID, ['State'], [self.State])
+    def set_Status(self, status):
+        self.Status = status
+        db.MODIFIED('contact', self.ContactorID, ['Status'], [self.Status])
 
     def set_Residence(self, residence):
         self.Residence = residence
