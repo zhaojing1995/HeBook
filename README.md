@@ -517,8 +517,8 @@ marital_status | int | N| 　０单身　１恋爱　２　已婚
 | 参数名 | 类型| 是否必须 | 描述|
 | --|--|--|--|
 user_id | char | Y |
-app_name | int | Y
-app_account | char | Y 
+app_name | int | Y | 
+app_account | char | Y |
 authorzation_code | char |Y 
 
 
