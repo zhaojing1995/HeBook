@@ -351,6 +351,352 @@ Hebook定位于人脉信息管理平台，帮助用户存储、查询复杂的�
 
 
 
+# 5 接口设计说明
+## 5.1 综述
+### 5.1.1统一的输入输出参数
+**response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+success | int | Y | 0 失败； 1 成功
+error_code | int | N | 错误码
+error_desc | String | N | 错误消息
+
+### 5.1.2 错误返回码列表
+| error_code | error_desc | 
+|--|--|
+| 1 | 授权过期 
+500 | 服务器内部错误
+600 | 账号被锁定（是否需要新增 锁定的标志位）
+10005 | 手机验证码不正确
+10006 | 手机验证码已失效
+10011 | 原密码不正确（可能会用到）
+
+
+## 5.2 用户接口
+### 5.2.1 用户注册（user/signup）
+| item | content |
+|--|--|
+|接口 | user/signup
+描述 | 用户注册
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+account | int | Y | 注册手机号
+password | char | Y | 密码
+verify_code | int | Y | 验证码
+
+验证码的正确与否，由后台检验。
+前端传输密码的明文给后台。
+
+**Response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y | 用户ＩＤ
+
+**Example**
+Request
+
+```
+{
+	"account":158**************,
+	"password": " 123456 " ，
+	"verify_code”:11111
+}
+```
+
+Response
+
+```
+＃１错误情况
+{
+	"succeed":0,
+	"error_code":10005,
+	"error_desc":"手机验证码错误"
+}
+```
+### 5.2.2　发送验证码(user/verify_code)
+| item | content |
+|--|--|
+|接口 | user/verify_code
+描述 | 发送验证码
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+account | int | Y | 注册手机号
+
+**Response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+verify_code | int  | Y | 验证码
+
+
+### 5.2.3 修改密码(user/change_password)
+
+| item | content |
+|--|--|
+|接口 | user/change_password
+描述 | 修改密码
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+account | int | Y | 注册手机号
+password | int | Y |　初始密码
+password_new | int | Y | 新密码
+
+**Response**
+【统一返回】
+
+
+### 5.2.4 用户登录　(user/signin)
+| item | content |
+|--|--|
+|接口 | user/signin
+描述 | 　用户登录
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+account | int | Y | 注册手机号
+password | char | Y | 密码
+
+**Response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y | 用户ＩＤ
+
+
+
+### 5.2.5 设置用户信息　(user/set_info)
+| item | content |
+|--|--|
+|接口 | user/set_info
+描述 | 设置用户信息
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y | 用户ＩＤ
+name | char  | N |
+gender | bool | N | 0 女，１男（若没有信息，则为NULL）
+birthdate | time | N
+phone_number1 | int | N
+phone_number2 | int| N
+state | int | N | 0 在读　１在职　２退休　３无业
+residence | char | N |
+birthplace | char  | N |
+marital_status | int | N| 　０单身　１恋爱　２　已婚
+
+用户根据需要修改信息，只提交有变更的信息。
+
+
+**Response**
+【统一返回】 设置成功或失败
+
+### 5.2.6 授权第三方平台　(user/auth_app）
+| item | content |
+|--|--|
+|接口 | user/ass_app
+描述 | 授权第三方平台，用于登录等
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y |
+app_name | int | Y
+app_account | char | Y 
+authorzation_code | char |Y 
+
+
+**Response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+authorization_id | int | Y |
+
+
+
+### 5.2.7 添加标签　(user/add_mark）
+| item | content |
+|--|--|
+|接口 | user/add_mark
+描述 | 添加标签， 检测是否存在同名的标签，若有则直接修改其is_delete标志位
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y |
+mark_name | char | Y|
+
+**Response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+mark_id |	int | Y
+
+### 5.2.8 删除标签　(user/delete_mark）
+| item | content |
+|--|--|
+|接口 | user/delete_mark
+描述 | 删除标签， 只修改is_delete标记位
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y |
+mark_id | int | Y|
+
+**Response**
+【统一返回】是否删除成功
+
+
+
+### 5.2.9 获取标签列表　(user/get_mark）
+| item | content |
+|--|--|
+|接口 | user/get_mark
+描述 | 获取标签列表　
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y |
+
+
+**Response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+marks | Array  | Y
+mark_id |	int |Y
+mark_name	|char	| Y
+mark_holder	|int| Y
+
+
+### 5.2.10 获取用户信息　(user/get_info)
+| item | content |
+|--|--|
+|接口 | user/signin
+描述 |  获取用户信息
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | int 
+
+**Response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user | Array | Y | 用户信息列表
+user_id | char | Y | 用户ＩＤ
+is_vip | bool | Y | 
+contact_count | int | Y
+name | char  | Y |
+gender | bool | Y | 0 女，１男（若没有信息，则为NULL）
+birthdate | time | Y 
+phone_number1 | int | Y
+phone_number2 | int| Y
+state | int | Y | 0 在读　１在职　２退休　３无业
+residence | char | Y |
+birthplace | char  | Y|
+marital_status | int | Y| 　０单身　１恋爱　２　已婚
+
+**Example**
+Response
+
+```
+# 正常情况
+{
+	"succeed":1,
+	"user":{
+			"user_id":"U23422342",
+			"is_vip":０，
+			……
+
+	}
+}
+```
+
+
+### 5.2.11 添加偏好　(user/add_prefer）
+| item | content |
+|--|--|
+|接口 | user/add_prefer
+描述 | 添加偏好， 检测是否存在同名的偏好，若有则直接修改其is_delete标志位
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y |
+prefer_name | char | Y|
+prefer_type | int 
+
+**Response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+prefer_id |	int | Y
+
+### 5.2.12 删除偏好　(user/delete_prefer）
+| item | content |
+|--|--|
+|接口 | user/delete_prefer
+描述 | 删除偏好， 只修改is_delete标记位
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y |
+prefer_id | int | Y|
+
+**Response**
+【统一返回】是否删除成功
+
+
+
+### 5.2.13 获取偏好列表　(user/get_prefer）
+| item | content |
+|--|--|
+|接口 | user/get_prefer
+描述 | 获取偏好列表　
+验证 | Session 
+方法 | GET/POST
+
+**Request**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+user_id | char | Y |
+
+**Response**
+| 参数名 | 类型| 是否必须 | 描述|
+| --|--|--|--|
+prefers | Array  | Y
+prefer_id |	int |Y
+prefer_name	|char	| Y
+prefer_holder	|int| Y
+prefer_type | int |Y
 
 
 
